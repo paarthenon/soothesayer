@@ -3,20 +3,21 @@ import {useAppState} from './redux/hooks';
 import {match} from 'variant';
 import {AboutPage} from 'ui/AboutPage';
 import {OptionsPage} from 'ui/OptionsPage';
-import {Home} from 'ui/Home';
+import {Game} from 'ui/Game';
+import {Box} from '@chakra-ui/react';
 
 export function App() {
     const view = useAppState(s => s.view);
     return (
-        <div className="App">
+        <Box className="App">
             {match(view, {
                 About: _ => <AboutPage />,
-                Home: _ => <Home />,
+                Game: _ => <Game />,
                 MainMenu: _ => <MainMenu />,
                 Options: _ => <OptionsPage />,
                 Reading: _ => <div>Unimplemented</div>,
             })}
-        </div>
+        </Box>
     );
 }
 

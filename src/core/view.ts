@@ -2,7 +2,7 @@ import {TypeNames, variant, VariantOf} from 'variant';
 
 export const View = variant({
     About: {},
-    Home: {},
+    Game: {},
     MainMenu: {},
     Options: {},
     /**

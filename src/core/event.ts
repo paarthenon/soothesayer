@@ -21,6 +21,17 @@ export const MuggingOutcome = catalog([
 ])
 export type MuggingOutcome = keyof typeof MuggingOutcome;
 
+
+
+/**
+ * Relationship events
+ * 
+ * - Finding love
+ * - losing love
+ * - commiting to marriage
+ * 
+ */
+
 export const Event = variant({
     Mugged: fields<{
         outcome: MuggingOutcome;

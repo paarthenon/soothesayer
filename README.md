@@ -2,6 +2,11 @@
 
 Fate can be cruel, but people don't tip for bad news.
 
+
+TODO 
+- Add invisibility to the modal backgrounds
+
+
 ---
 What remains is the CRA Header
 ---
