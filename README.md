@@ -1,3 +1,11 @@
+# Soothesayer
+
+Fate can be cruel, but people don't tip for bad news.
+
+---
+What remains is the CRA Header
+---
+
 This project was bootstrapped with
 [Create React App](https://github.com/facebook/create-react-app).
 
