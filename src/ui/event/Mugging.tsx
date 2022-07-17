@@ -1,4 +1,3 @@
-import {Box} from "@chakra-ui/react";
 import {match} from "variant";
 import {EventProps} from "./EventProps";
 
@@ -13,6 +12,7 @@ export const Mugging = ({context, event}: EventProps<'Mugged'>) => {
                 injured: _ => <>got hurt</>,
                 paid: _ => <>paid them off</>,
                 victory: _ => <>fought back and won</>,
+                saved: _ => <>were saved by a brave passerby</>,
             })}
 
             
