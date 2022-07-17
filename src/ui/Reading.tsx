@@ -1,12 +1,17 @@
 import {Box, List, ListItem, VStack, Text, Divider, Button, Fade} from "@chakra-ui/react"
+import {Event} from "core/event";
 import {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
 import {Action} from "redux/actions";
+import {useGame} from "redux/hooks";
+import {RenderEvent} from "./event/RenderEvent";
 
 export const Reading = () => {
     const dispatch = useDispatch();
 
     const [showText, setShowText] = useState(false);
+
+    const customer = useGame(g => g.activeReading!.customer);
 
     useEffect(() => {
         setTimeout(() => {
@@ -28,6 +33,11 @@ export const Reading = () => {
                     <Text>Tyranel got mugged. They demanded his property. He fought back and was killed.</Text>
                 </VStack>
             </Fade>
+
+            <RenderEvent
+                context={{health: undefined, relationships: undefined, subject: customer} as any}
+                event={Event.Mugged({outcome: 'victory'})}
+            />
 
 
             <Button onClick={() => {

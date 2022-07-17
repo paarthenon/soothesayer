@@ -1,14 +1,15 @@
 import {fields, TypeNames, variant, VariantOf} from 'variant';
+import {Person} from './person';
 
 type place = string;
 
-/**
- * Person or item. For now, keep it to people because the events are probably too different.
- */
-export const Subject = variant({
-    Person: {},
-})
-export type Subject<T extends TypeNames<typeof Subject> = undefined> = VariantOf<typeof Subject, T>
+// /**
+//  * Person or item. For now, keep it to people because the events are probably too different.
+//  */
+// export const Subject = variant({
+//     Person: {},
+// })
+// export type Subject<T extends TypeNames<typeof Subject> = undefined> = VariantOf<typeof Subject, T>
 
 export const Situation = variant({
     Home: fields<{place: string;}>(),
@@ -22,7 +23,7 @@ export type Situation<T extends TypeNames<typeof Situation> = undefined> = Varia
  * on the road. Such events will only happen in the city.
  */
 export interface Context {
-    subject: Subject;
+    subject: Person;
     situation: Situation;
     health: unknown;
     relationships: unknown;

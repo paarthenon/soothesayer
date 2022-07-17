@@ -21,7 +21,7 @@ export const Game = () => {
     }
     console.log('customer', customer);
 
-    const isOpen = useGame(g => g.activeReading ? g.activeReading.communing : false);
+    const isOpen = useGame(g => g.activeReading ? g.activeReading.stage === 'prophesy' : false);
     return (
         <Box>
             <Text>The game itself</Text>

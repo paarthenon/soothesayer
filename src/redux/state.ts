@@ -1,5 +1,6 @@
 import {Person} from 'core/person';
 import {View} from 'core/view';
+import {catalog, fields, TypeNames, variant, VariantOf} from 'variant';
 
 export interface RootState {
     game?: GameState;
@@ -27,8 +28,15 @@ export interface Reading {
      * Reading
      * Conclusion
      */
-    communing: boolean;
+    stage: ReadingStage;
 }
+
+export const ReadingStage = catalog([
+    'greeting',
+    'prophesy',
+    'conclusion',
+]);
+export type ReadingStage = keyof typeof ReadingStage;
 
 export const initState: RootState = {
     view: View.MainMenu(),

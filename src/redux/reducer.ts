@@ -37,17 +37,17 @@ export const gameReducer = (game: GameState, action: GameAction) => {
                 g.activeReading = {
                     customer: person,
                     subject: person,
-                    communing: false,
+                    stage: 'greeting',
                 }
             },
             BeginReading() {
                 if (g.activeReading) {
-                    g.activeReading.communing = true;
+                    g.activeReading.stage = 'prophesy';
                 }
             },
             ReportReading() {
                 if (g.activeReading) {
-                    g.activeReading.communing = false;
+                    g.activeReading.stage = 'conclusion';
                 }
             }
         })
