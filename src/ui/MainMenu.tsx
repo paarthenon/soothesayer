@@ -17,7 +17,8 @@ export const MainMenu = ({ }: MainMenuProps) => {
         <Box>
             <Heading>Soothe Sayer</Heading>
             <Text>
-                Find what fate has in store, then tell it to fuck off
+                Fate can be cruel, but people don't tip for bad news.
+                {/* Find what fate has in store, then tell it to fuck off */}
             </Text>
             <List>
                 {isGameRunning && (

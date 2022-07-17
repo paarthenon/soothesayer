@@ -1,3 +1,4 @@
+import {Context} from 'core/context';
 import {Event} from 'core/event';
 import {Person} from 'core/person';
 import {View} from 'core/view';
@@ -23,6 +24,12 @@ export interface Reading {
     focus?: unknown;
     stage: ReadingStage;
     timeline: Event[];
+    context: Context;
+}
+
+export interface TimelineEvent {
+    context: Context;
+    event: Event;
 }
 
 export const ReadingStage = catalog([

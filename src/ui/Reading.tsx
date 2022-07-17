@@ -12,6 +12,7 @@ export const Reading = () => {
     const [showText, setShowText] = useState(false);
 
     const customer = useGame(g => g.activeReading!.customer);
+    const reading = useGame(g => g.activeReading!);
 
     useEffect(() => {
         setTimeout(() => {
@@ -34,10 +35,24 @@ export const Reading = () => {
                 </VStack>
             </Fade>
 
+            <Divider />
+
+            <Fade in={showText} style={{
+                transitionDuration: 'var(--chakra-transition-duration-ultra-slow)'
+            }}>
+                <VStack gap={2} margin={4} opacity={.5}>
+                    {reading.timeline.map(te => (
+                        <RenderEventLine event={te} context={reading.context} />
+                    ))}
+                </VStack>
+            </Fade>
+
             <RenderEventLine
                 context={{health: undefined, relationships: undefined, subject: customer} as any}
                 event={Event.Mugged({outcome: 'victory'})}
             />
+
+            
 
 
             <Button onClick={() => {
