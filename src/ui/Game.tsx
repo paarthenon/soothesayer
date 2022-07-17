@@ -53,21 +53,25 @@ export const Game = () => {
             )}
 
 
-            {reading?.stage === 'greeting' && <>
-                <Button onClick={beginReading}>
-                    Begin reading
-                </Button>
-            </>}
+            <Box padding={8} maxWidth={800}>
+                {reading?.stage === 'greeting' && <>
+                    <Button onClick={beginReading}>
+                        Begin reading
+                    </Button>
+                </>}
 
-            {reading?.stage === 'conclusion' ? <Text>
-                <CustomerReaction />
-            </Text> : null} 
+                {reading?.stage === 'conclusion' ? <Text>
+                    <CustomerReaction />
+                </Text> : null} 
 
-            {(reading == undefined || reading.stage === 'conclusion') && (
-                <Button onClick={greetCustomer}>
-                    Greet new customer
-                </Button>
-            )}
+                {(reading == undefined || reading.stage === 'conclusion') && (
+                    <Button onClick={greetCustomer}>
+                        Greet new customer
+                    </Button>
+                )}
+            </Box>
+
+
 
 
             <Divider m={8} />
