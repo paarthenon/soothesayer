@@ -1,5 +1,5 @@
 
-import {Box, Button, Center, Fade, HStack, Modal, ModalContent, ModalOverlay, Text, useDimensions} from '@chakra-ui/react';
+import {Box, Button, Center, Divider, Fade, HStack, IconButton, Modal, ModalContent, ModalOverlay, Text, useDimensions} from '@chakra-ui/react';
 import {Appearance} from 'core/person';
 import {View} from 'core/view';
 import {useDispatch} from 'react-redux';
@@ -14,11 +14,17 @@ export const Game = () => {
 
     const dispatch = useDispatch();
 
+    const reading = useGame(g => g.activeReading);
     const customer = useGame(g => g.activeReading && g.activeReading.customer);
 
     function greetCustomer() {
         dispatch(Action.GreetCustomer());
     }
+
+    function beginReading() {
+        dispatch(Action.BeginReading());
+    }
+
     console.log('customer', customer);
 
     const isOpen = useGame(g => g.activeReading ? g.activeReading.stage === 'prophesy' : false);
@@ -39,17 +45,31 @@ export const Game = () => {
                 </HStack>
             </Center>
 
-            {customer ? (
+            {customer && (
                 <>
                     <GreetCustomer />
                 </>
-            ) : (
+            )}
+
+
+            {reading?.stage === 'greeting' && <>
+                <Button onClick={beginReading}>
+                    Begin reading
+                </Button>
+            </>}
+
+            {reading?.stage === 'conclusion' ? <Text>
+                You report your findings to {reading.customer.pronoun.them}.
+            </Text> : null} 
+
+            {reading == undefined || reading.stage === 'conclusion' && (
                 <Button onClick={greetCustomer}>
-                    Greet Customer
+                    Greet new customer
                 </Button>
             )}
 
 
+            <Divider m={8} />
             <Link text='Main menu' goto={View.MainMenu()} />
 
             <Modal isOpen={isOpen} onClose={() => {}}>
@@ -69,17 +89,13 @@ export const GreetCustomer = () => {
     const dispatch = useDispatch();
 
     const customer = useGame(g => g.activeReading!.customer)
-    function beginReading() {
-        dispatch(Action.BeginReading());
-    }
+
     return (
         <Box>
             <Text>
-                Welcome, {customer.name};
+                Welcome, {customer.name}.
             </Text>
-            <Button onClick={beginReading}>
-                Begin reading
-            </Button>
+
         </Box>
     )
 }
