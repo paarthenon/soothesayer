@@ -60,10 +60,10 @@ export const Game = () => {
             </>}
 
             {reading?.stage === 'conclusion' ? <Text>
-                You report your findings to {reading.customer.pronoun.them}.
+                You report your findings to {reading.customer.pronoun.them}. She is not pleased.
             </Text> : null} 
 
-            {reading == undefined || reading.stage === 'conclusion' && (
+            {(reading == undefined || reading.stage === 'conclusion') && (
                 <Button onClick={greetCustomer}>
                     Greet new customer
                 </Button>
