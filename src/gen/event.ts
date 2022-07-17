@@ -1,4 +1,4 @@
-import {ArrivalOutcome, Event} from "core/event";
+import {ArrivalOutcome, BreakupOutcome, ChildOutcome, DrowningOutcome, Event, FightOutcome, ForkOutcome, FoundMoneyOutcome, LoveOutcome, MuggingOutcome, ProstituteOutcome, RelicOutcome} from "core/event";
 import {values} from "lodash";
 import {match, partial, TypeNames, types, TypesOf} from "variant";
 import chance from "./chance";
@@ -13,35 +13,39 @@ export function genEvent<T extends TypesOf<typeof Event>>(requestedType?: T) {
                 outcome
             })
         },
-        Breakup() {
-            return Event.FoundMoney({outcome: 'keep'})
+        Breakup: () => {
+            const outcome = chance.pickone(values(BreakupOutcome));
+            return Event.Breakup({outcome})
         },
         Child() {
-            return Event.FoundMoney({outcome: 'keep'})
+            const outcome = chance.pickone(values(ChildOutcome));
+            return Event.Child({outcome})
         },
         Drowning() {
-            return Event.FoundMoney({outcome: 'keep'})
-        },
+            const outcome = chance.pickone(values(DrowningOutcome));
+            return Event.Drowning({outcome})        },
         Fight() {
-            return Event.FoundMoney({outcome: 'keep'})
-        },
+            const outcome = chance.pickone(values(FightOutcome));
+            return Event.Fight({outcome})        },
         Fork() {
-            return Event.FoundMoney({outcome: 'keep'})
-        },
+            const outcome = chance.pickone(values(ForkOutcome));
+            return Event.Fork({outcome})        },
         FoundMoney() {
-            return Event.FoundMoney({outcome: 'keep'})
-        },
+            const outcome = chance.pickone(values(FoundMoneyOutcome));
+            return Event.FoundMoney({outcome})        },
         Love() {
-            return Event.FoundMoney({outcome: 'keep'})
-        },
+            const outcome = chance.pickone(values(LoveOutcome));
+            return Event.Love({outcome})        },
         Mugged() {
-            return Event.FoundMoney({outcome: 'keep'})
-        },
+            const outcome = chance.pickone(values(MuggingOutcome));
+            return Event.Mugged({outcome})        },
         Prostitute() {
-            return Event.FoundMoney({outcome: 'keep'})
+            const outcome = chance.pickone(values(ProstituteOutcome));
+            return Event.Prostitute({outcome})
         },
         Relic() {
-            return Event.FoundMoney({outcome: 'keep'})
+            const outcome = chance.pickone(values(RelicOutcome));
+            return Event.Relic({outcome})
         },
     })
 }

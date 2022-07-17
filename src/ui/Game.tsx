@@ -1,6 +1,7 @@
 
 import {Box, Button, Center, Divider, Fade, HStack, IconButton, Modal, ModalContent, ModalOverlay, Text, useDimensions} from '@chakra-ui/react';
 import {Appearance} from 'core/person';
+import { resultOpinion } from 'core/resultOpinion';
 import {View} from 'core/view';
 import {useDispatch} from 'react-redux';
 import {Action} from 'redux/actions';
@@ -87,10 +88,32 @@ export const Game = () => {
 
 export const CustomerReaction = () => {
     const reading = useGame(g => g.activeReading!);
+    const opinion = resultOpinion(reading);
+    let reaction = "";
+
+    if(opinion > 15){
+        reaction = reading.customer.pronoun.they + " is very pleased!"
+    }
+    if(opinion > 5 && opinion <= 15){
+        reaction = reading.customer.pronoun.they + " is happy with what " + reading.customer.pronoun.they + " heard."
+    }
+    if(opinion > -5 && opinion <= 5){
+        reaction = reading.customer.pronoun.they + " is neither pleased nor displeased."
+    }
+    if(opinion > -15 && opinion <= -5){
+        reaction = reading.customer.pronoun.they + " is unhappy with this reading."
+    }
+    if(opinion <= -15){
+        reaction = reading.customer.pronoun.they + " loathes what " + reading.customer.pronoun.they + " heard."
+    }
+
     return (
         <>
-            You report your findings to {reading.customer.pronoun.them}. She is not pleased.
+            You report your findings to {reading.customer.pronoun.them}. {opinion}
+            {' '}
+            {reaction}
         </>
+        
     )
 }
 

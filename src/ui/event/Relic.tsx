@@ -10,7 +10,7 @@ export const Relic = ({context, event}: EventProps<'Relic'>) => {
             {match(event.outcome, {
                 pass: _ => <>decided it wasn't worth the cost</>,
                 buy: _ => <>eagerly forked over their money for it</>,
-                haggle: _ => <>haggled with the merchant until they could get it for a fair price</>,
+                haggle: _ => <>haggled with the merchant until {person.pronoun.they} could get it for a fair price</>,
             })}
 
             
