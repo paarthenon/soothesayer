@@ -60,7 +60,7 @@ export const Game = () => {
             </>}
 
             {reading?.stage === 'conclusion' ? <Text>
-                You report your findings to {reading.customer.pronoun.them}. She is not pleased.
+                <CustomerReaction />
             </Text> : null} 
 
             {(reading == undefined || reading.stage === 'conclusion') && (
@@ -83,6 +83,15 @@ export const Game = () => {
             </Modal>
         </Box>
     );
+}
+
+export const CustomerReaction = () => {
+    const reading = useGame(g => g.activeReading!);
+    return (
+        <>
+            You report your findings to {reading.customer.pronoun.them}. She is not pleased.
+        </>
+    )
 }
 
 

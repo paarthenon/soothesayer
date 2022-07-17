@@ -46,15 +46,7 @@ export const Reading = () => {
                     ))}
                 </VStack>
             </Fade>
-
-            <RenderEvent
-                context={{health: undefined, relationships: undefined, subject: customer} as any}
-                event={Event.Mugged({outcome: 'victory'})}
-            />
-
             
-
-
             <Button onClick={() => {
                 dispatch(Action.ReportReading());
             }}>
