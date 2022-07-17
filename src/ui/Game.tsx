@@ -1,12 +1,13 @@
 
-import {Box, Button, Center, Divider, Fade, HStack, IconButton, Modal, ModalContent, ModalOverlay, Text, useDimensions} from '@chakra-ui/react';
+import {Box, Button, Center, Divider, Fade, Flex, Grid, HStack, IconButton, Image, Modal, ModalContent, ModalOverlay, Text, useDimensions, VStack} from '@chakra-ui/react';
 import {Appearance} from 'core/person';
+import {caps} from 'core/stringUtil';
 import {View} from 'core/view';
 import {useDispatch} from 'react-redux';
 import {Action} from 'redux/actions';
 import {useAppState, useGame} from "redux/hooks";
 import {Link} from 'ui/Link';
-import {CustomerDescription} from './CustomerDescription';
+import {CustomerDescription, CustomerPortrait} from './CustomerDescription';
 import {Reading} from './Reading';
 
 export const Game = () => {
@@ -31,8 +32,6 @@ export const Game = () => {
     const isOpen = useGame(g => g.activeReading ? g.activeReading.stage === 'prophesy' : false);
     return (
         <Box>
-            <Text>The game itself</Text>
-
             <Center>
                 <HStack>
                     <Box>
@@ -101,12 +100,24 @@ export const GreetCustomer = () => {
     const customer = useGame(g => g.activeReading!.customer)
 
     return (
-        <Box>
-            <Text>
-                Welcome, {customer.name}.
-            </Text>
-            <CustomerDescription customer={customer} />
+        <HStack>
+            <CustomerPortrait customer={customer} />
+            <VStack>
+                <Text>
+                    The bell rings marking another customer coming through the door. You wave at {customer.pronoun.them},
+                    welcoming {customer.name} into your shop.
+                </Text>
+                <CustomerDescription customer={customer} />
 
-        </Box>
+                <Text>
+                    {caps(customer.pronoun.they)} takes a seat, glancing around the shop. <i>They always do this</i>. The new customers stare
+                    in awe of the devices strewn about the room. The returning ones note what's changed since their last visit.
+                    But always, it comes to the reading. The moment that the person on the other side of the table asks for your
+                    insight... and your power.
+                </Text>
+
+            </VStack>
+        </HStack>
+
     )
 }

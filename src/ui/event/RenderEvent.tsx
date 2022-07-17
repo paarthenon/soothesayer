@@ -2,7 +2,7 @@ import {Event} from "core/event";
 import {match, partial} from "variant"
 import {EventProps} from "./EventProps";
 import {ImageMap} from "./ImageMap";
-import {IconButton} from "@chakra-ui/react";
+import {HStack, IconButton} from "@chakra-ui/react";
 
 import { Arrival } from "./Arrival";
 import { Breakup } from "./Breakup";
@@ -20,7 +20,7 @@ const ProfileIcon = (props: EventProps) =>
     ImageMap[props.event.type]
 
 const RenderEventLine = (props: EventProps) => {
-    return match(props.event, partial({
+    return match(props.event, {
         Relic: event => <Relic event={event} context={props.context} />,
         FoundMoney: event => <FoundMoney event={event} context={props.context} />,
         Drowning: event => <Drowning event={event} context={props.context} />,
@@ -32,17 +32,15 @@ const RenderEventLine = (props: EventProps) => {
         Fight: event => <Fight event={event} context={props.context} />,
         Breakup: event => <Breakup event={event} context={props.context} />,
         Child: event => <Child event={event} context={props.context} />,
-
-        default: () => <>Unimplemented</>,
-    }));
+    });
 }
 
 const RerollEventButtons = (props: EventProps) => {
 
 }
 
-export const RenderEvent = (props: EventProps) => <>
+export const RenderEvent = (props: EventProps) => <HStack>
     <ProfileIcon {...props} />
     <RenderEventLine {...props}/>
     {/* <RerollEventButtons /> */}
-</>
+</HStack>
