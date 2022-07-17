@@ -33,13 +33,14 @@ export const gameReducer = (game: GameState, action: GameAction) => {
                 const person: Person = {
                     name: 'Annika',
                     pronoun: she,
-                    apperance: Appearance.Worker(),
+                    apperance: Appearance.FamilyHead(),
                     wealth: Wealth.Poor,
                 }
                 g.activeReading = {
                     customer: person,
                     subject: person,
                     stage: 'greeting',
+                    timeline: [],
                 }
             },
             BeginReading() {

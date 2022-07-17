@@ -1,14 +1,16 @@
 import {Event} from "core/event";
-import {match} from "variant"
+import {match, partial} from "variant"
 import {EventProps} from "./EventProps";
 import {Mugging} from "./Mugging";
 
 
 
 export const RenderEventLine = (props: EventProps) => {
-    return match(props.event, {
-        Mugged: () => <Mugging {...props} />
-    });
+    return match(props.event, partial({
+        Mugged: event => <Mugging event={event} context={props.context} />,
+
+        default: () => <>Unimplemented</>,
+    }));
 }
 
 

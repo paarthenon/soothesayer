@@ -6,6 +6,7 @@ import {useDispatch} from 'react-redux';
 import {Action} from 'redux/actions';
 import {useAppState, useGame} from "redux/hooks";
 import {Link} from 'ui/Link';
+import {CustomerDescription} from './CustomerDescription';
 import {Reading} from './Reading';
 
 export const Game = () => {
@@ -95,6 +96,7 @@ export const GreetCustomer = () => {
             <Text>
                 Welcome, {customer.name}.
             </Text>
+            <CustomerDescription customer={customer} />
 
         </Box>
     )

@@ -1,3 +1,4 @@
+import {Event} from 'core/event';
 import {Person} from 'core/person';
 import {View} from 'core/view';
 import {catalog, fields, TypeNames, variant, VariantOf} from 'variant';
@@ -20,15 +21,8 @@ export interface Reading {
      * @todo Health, Wealth, or Love
      */
     focus?: unknown;
-    /**
-     * @todo:
-     * 
-     * Consider replacing this with something like a stage, featuring events
-     * Greeting
-     * Reading
-     * Conclusion
-     */
     stage: ReadingStage;
+    timeline: Event[];
 }
 
 export const ReadingStage = catalog([
