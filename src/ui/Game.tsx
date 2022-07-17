@@ -106,9 +106,11 @@ export const CustomerReaction = () => {
         reaction = reading.customer.pronoun.they + " loathes what " + reading.customer.pronoun.they + " heard."
     }
 
+    reaction = caps(reaction)
+
     return (
         <>
-            You report your findings to {reading.customer.pronoun.them}. {opinion}
+            You report your findings to {reading.customer.pronoun.them}.
             {' '}
             {reaction}
         </>

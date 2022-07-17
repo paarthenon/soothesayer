@@ -29,7 +29,16 @@ export const appReducer = (state: RootState, action: AppAction) => {
 export const gameReducer = (game: GameState, action: GameAction) => {
     return produce(game, g => { 
         match(action, {
-            AlterDice: noop,
+            AlterDice({position, rerollType}) {
+                if(rerollType == "gold" && g.activeReading != undefined){
+                    g.activeReading.timeline[position] = genEvent();
+                    game.gold--;
+                }
+                if(rerollType == "silver" && g.activeReading != undefined){
+                    g.activeReading.timeline[position] = genEvent(g.activeReading.timeline[position].type);
+                    game.silver--;
+                }
+            },
             GreetCustomer({}) {
                 const person: Person = {
                     name: 'Annika',
@@ -60,7 +69,7 @@ export const gameReducer = (game: GameState, action: GameAction) => {
                 if (g.activeReading) {
                     g.activeReading.stage = 'conclusion';
                 }
-            }
+            },
         })
     })
 }
