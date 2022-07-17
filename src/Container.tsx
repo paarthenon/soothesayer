@@ -24,8 +24,8 @@ const myTheme = extendTheme({
     styles: {
         global: (props: any) => ({
           body: {
-            color: mode('red.900', '#531009')(props),
-            bg: mode('#DFD7D6', '#141214')(props),
+            color: mode('red.900', '#d38870')(props),
+            bg: mode('#DFD7D6', '#1c081c')(props),
           },
         }),
       }

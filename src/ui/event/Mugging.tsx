@@ -12,7 +12,7 @@ export const Mugging = ({context, event}: EventProps<'Mugged'>) => {
                 injured: _ => <>got hurt</>,
                 paid: _ => <>paid them off</>,
                 victory: _ => <>fought back and won</>,
-                saved: _ => <>were saved by a brave passerby</>,
+                saved: _ => <>was saved by a brave passerby</>,
             })}
 
             

@@ -17,6 +17,7 @@ import { Mugging } from "./Mugging";
 import { Prostitute } from "./Prostitute";
 import { Relic } from "./Relic";
 import {Metal} from "redux/actions";
+import { useGame } from "redux/hooks";
 
 const ProfileIcon = (props: EventProps) => 
     ImageMap[props.event.type]
@@ -37,15 +38,18 @@ const RenderEventLine = (props: EventProps) => {
     });
 }
 
-const RerollEventButtons = (props: EventProps) => {
+const RerollEventButtons = (props: EventProps & {rerollFunc: (metal: Metal) => void}) => {
+    const hasGold = useGame(g => g.gold) > 0;
+    const hasSilver = useGame(g => g.silver) > 0;
     return<>
-        <IconButton aria-label="gold" colorScheme='yellow' icon={<GiToken />} />
-        <IconButton aria-label="silver" colorScheme='gray' icon={<GiToken />} />
+        <IconButton aria-label="gold" colorScheme='yellow' icon={<GiToken />} onClick={()=>props.rerollFunc("gold")} disabled={!hasGold}/>
+        <IconButton aria-label="silver" colorScheme='gray' icon={<GiToken />} onClick={()=>props.rerollFunc("silver")} disabled={!hasSilver}/>
     </>
 }
 
 export const RenderEvent = (props: EventProps & {rerollFunc: (metal: Metal) => void}) => <HStack>
     <ProfileIcon {...props} />
+    <span>&nbsp;</span>
     <RenderEventLine {...props}/>
     <RerollEventButtons {...props}/>
 </HStack>

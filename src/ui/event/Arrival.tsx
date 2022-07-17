@@ -5,7 +5,7 @@ export const Arrival = ({context, event}: EventProps<'Arrival'>) => {
     const person = context.subject;
     return (
         <>
-            {context.subject.name} arrived at their destination
+            {context.subject.name} arrived at {person.pronoun.their} destination
             {' '}
             {match(event.outcome, {
                 success: _ => <>on time with no issues</>,

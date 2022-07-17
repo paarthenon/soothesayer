@@ -25,6 +25,10 @@ export interface Reading {
     stage: ReadingStage;
     timeline: Event[];
     context: Context;
+    payment: {
+        gold: number,
+        silver: number
+    }
 }
 
 export interface TimelineEvent {
