@@ -3,6 +3,7 @@ import {match, partial} from "variant"
 import {EventProps} from "./EventProps";
 import {ImageMap} from "./ImageMap";
 import {HStack, IconButton} from "@chakra-ui/react";
+import {GiToken} from "react-icons/gi"
 
 import { Arrival } from "./Arrival";
 import { Breakup } from "./Breakup";
@@ -36,11 +37,14 @@ const RenderEventLine = (props: EventProps) => {
 }
 
 const RerollEventButtons = (props: EventProps) => {
-
+    return<>
+        <IconButton aria-label="gold" colorScheme='yellow' icon={<GiToken />} />
+        <IconButton aria-label="silver" colorScheme='gray' icon={<GiToken />} />
+    </>
 }
 
 export const RenderEvent = (props: EventProps) => <HStack>
     <ProfileIcon {...props} />
     <RenderEventLine {...props}/>
-    {/* <RerollEventButtons /> */}
+    <RerollEventButtons {...props}/>
 </HStack>
