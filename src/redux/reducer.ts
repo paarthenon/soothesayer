@@ -1,5 +1,6 @@
 import {Appearance, Person, Wealth} from 'core/person';
 import {she} from 'core/pronoun';
+import { resultOpinion } from 'core/resultOpinion';
 import {View} from 'core/view';
 import {genEvent} from 'gen/event';
 import produce from 'immer';
@@ -31,12 +32,16 @@ export const gameReducer = (game: GameState, action: GameAction) => {
         match(action, {
             AlterDice({position, rerollType}) {
                 if(rerollType == "gold" && g.activeReading != undefined){
-                    g.activeReading.timeline[position] = genEvent();
-                    game.gold--;
+                    if(g.gold > 0){
+                        g.activeReading.timeline[position] = genEvent();
+                        g.gold--;
+                    }
                 }
                 if(rerollType == "silver" && g.activeReading != undefined){
-                    g.activeReading.timeline[position] = genEvent(g.activeReading.timeline[position].type);
-                    game.silver--;
+                    if(g.silver > 0){
+                        g.activeReading.timeline[position] = genEvent(g.activeReading.timeline[position].type);
+                        g.silver--;
+                    }
                 }
             },
             GreetCustomer({}) {
@@ -54,7 +59,8 @@ export const gameReducer = (game: GameState, action: GameAction) => {
                     context: {
                         subject: person,
                         tags: {}
-                    }
+                    },
+                    payment: {gold: 0, silver: 0}
                 }
             },
             BeginReading() {
@@ -67,7 +73,13 @@ export const gameReducer = (game: GameState, action: GameAction) => {
             },
             ReportReading() {
                 if (g.activeReading) {
+                    const opinion = resultOpinion(g.activeReading)
+                    const goldPayment = Math.max(Math.floor (opinion / 12), 0)
+                    const silverPayment = Math.max(Math.floor(3 + opinion / 6), 0)
+                    g.gold += goldPayment
+                    g.silver += silverPayment
                     g.activeReading.stage = 'conclusion';
+                    g.activeReading.payment = {gold: goldPayment, silver: silverPayment}
                 }
             },
         })

@@ -108,11 +108,16 @@ export const CustomerReaction = () => {
 
     reaction = caps(reaction)
 
+    const payment = caps(reading.customer.pronoun.they) + " hands you " + reading.payment.gold + " gold coin(s) and " +
+        reading.payment.silver + " silver coin(s)."
+
     return (
         <>
             You report your findings to {reading.customer.pronoun.them}.
             {' '}
             {reaction}
+            {' '}
+            {payment}
         </>
         
     )

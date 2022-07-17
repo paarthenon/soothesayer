@@ -5,12 +5,12 @@ export const Prostitute = ({context, event}: EventProps<'Prostitute'>) => {
     const person = context.subject;
     return (
         <>
-            {context.subject.name} met a prostitute and {person.pronoun.they}
+            {context.subject.name} met a prostitute and 
             {' '}
             {match(event.outcome, {
-                chat: _ => <>spent the chatting in comfort</>,
+                chat: _ => <>they spent the chatting in comfort</>,
                 baby: _ => <>they got pregnant</>,
-                std: _ => <>contracted an STD</>,
+                std: _ => <>{person.pronoun.they} contracted an STD</>,
             })}
 
             
