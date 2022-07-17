@@ -3,6 +3,7 @@ import {she} from 'core/pronoun';
 import { resultOpinion } from 'core/resultOpinion';
 import {View} from 'core/view';
 import {genEvent} from 'gen/event';
+import { genPerson } from 'gen/person';
 import produce from 'immer';
 import {just, match, matcher, types,} from 'variant';
 import {Action, AppAction, GameAction} from './actions';
@@ -46,12 +47,7 @@ export const gameReducer = (game: GameState, action: GameAction) => {
                 }
             },
             GreetCustomer({}) {
-                const person: Person = {
-                    name: 'Annika',
-                    pronoun: she,
-                    appearance: Appearance.Worker(),
-                    wealth: Wealth.Poor,
-                }
+                const person: Person = genPerson()
                 g.activeReading = {
                     customer: person,
                     subject: person,

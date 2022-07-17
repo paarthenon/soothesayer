@@ -5,9 +5,10 @@ import {values} from 'lodash';
 
 export function genPerson(): Person {
     const appearance = chance.pickone(values(Appearance))();
+    const name = chance.name({ gender: 'female' });
 
     const person: Person = {
-        name: 'Annika',
+        name,
         appearance,
         pronoun: she,
         wealth: Wealth.Poor,
@@ -19,6 +20,12 @@ export function genPerson(): Person {
 export function genName() {
     return chance.pickone([
         'Margaret',
-        'Annika'
-    ])
+        'Annika',
+        'Elidar',
+        'Ishkar',
+        'Selamin',
+        'Garth',
+        'Pelock',
+        'Melena',
+        ])
 }
