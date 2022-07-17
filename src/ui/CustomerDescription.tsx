@@ -2,6 +2,8 @@ import {Image} from "@chakra-ui/react";
 import {Appearance, Person} from "core/person"
 import {caps} from "core/stringUtil";
 import {match} from "variant";
+import Patriarch from 'img/Patriarch.png';
+import Gypsy from 'img/Gypsy.png';
 
 interface CustomerDescriptionProps {
     customer: Person;
@@ -18,10 +20,11 @@ export const CustomerDescription = ({customer}: CustomerDescriptionProps) => {
 }
 
 export const CustomerPortrait = ({customer}: CustomerDescriptionProps) => {
+    const DEFAULT_IMAGE = 'https://via.placeholder.com/250x400';
     let srcMap: Record<Appearance['type'], string> = {
-        FamilyHead: '',
-        Worker: '',
+        FamilyHead: Patriarch,
+        Worker: Gypsy,
     };
 
-    return <Image src={'https://via.placeholder.com/250x400'}></Image>
+    return <Image src={srcMap[customer.appearance.type]}></Image>
 }

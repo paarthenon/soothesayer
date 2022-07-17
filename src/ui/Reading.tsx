@@ -29,8 +29,13 @@ export const Reading = () => {
                 transitionDuration: 'var(--chakra-transition-duration-ultra-slow)'
             }}>
                 <VStack gap={2} margin={4} opacity={.5}>
-                    {reading.timeline.map(te => (
-                        <RenderEvent event={te} context={reading.context} />
+                    {reading.timeline.map((te, position) => (
+                        <RenderEvent event={te} context={reading.context} rerollFunc={metal => {
+                            dispatch(Action.AlterDice({
+                                position,
+                                rerollType: metal,
+                            }))
+                        }} />
                     ))}
                 </VStack>
             </Fade>
