@@ -26,6 +26,6 @@ export enum Wealth {
 export interface Person {
     name: string;
     pronoun: Pronoun;
-    apperance: Appearance;
+    appearance: Appearance;
     wealth: Wealth;
 }

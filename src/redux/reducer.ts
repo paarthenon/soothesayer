@@ -1,6 +1,7 @@
 import {Appearance, Person, Wealth} from 'core/person';
 import {she} from 'core/pronoun';
 import {View} from 'core/view';
+import {genEvent} from 'gen/event';
 import produce from 'immer';
 import {just, match, matcher, types,} from 'variant';
 import {Action, AppAction, GameAction} from './actions';
@@ -33,7 +34,7 @@ export const gameReducer = (game: GameState, action: GameAction) => {
                 const person: Person = {
                     name: 'Annika',
                     pronoun: she,
-                    apperance: Appearance.FamilyHead(),
+                    appearance: Appearance.FamilyHead(),
                     wealth: Wealth.Poor,
                 }
                 g.activeReading = {
@@ -41,11 +42,18 @@ export const gameReducer = (game: GameState, action: GameAction) => {
                     subject: person,
                     stage: 'greeting',
                     timeline: [],
+                    context: {
+                        subject: person,
+                        tags: {}
+                    }
                 }
             },
             BeginReading() {
                 if (g.activeReading) {
                     g.activeReading.stage = 'prophesy';
+                    g.activeReading.timeline.push(genEvent());
+                    g.activeReading.timeline.push(genEvent());
+                    g.activeReading.timeline.push(genEvent());
                 }
             },
             ReportReading() {

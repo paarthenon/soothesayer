@@ -24,8 +24,9 @@ export type Situation<T extends TypeNames<typeof Situation> = undefined> = Varia
  */
 export interface Context {
     subject: Person;
-    situation: Situation;
-    health: unknown;
-    relationships: unknown;
+    // situation: Situation;
+    // health: unknown;
+    // relationships: unknown;
+    tags: {};
 }
 

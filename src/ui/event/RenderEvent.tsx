@@ -38,7 +38,7 @@ const RenderEventLine = (props: EventProps) => {
 }
 
 const RerollEventButtons = (props: EventProps) => {
-    
+
 }
 
 export const RenderEvent = (props: EventProps) => <>
