@@ -15,7 +15,8 @@ export const CustomerDescription = ({customer}: CustomerDescriptionProps) => {
             {' '}
             are tastefully tailored with modest but well-crafted decorations.
         </>,
-        Worker: _ => <>Worker</>
+        Worker: _ => <>{caps(customer.pronoun.they)} is dressed in simple work clothes. The fabric is wrinkled
+        and lightly stained, but functional. </>
     })
 }
 
@@ -26,5 +27,5 @@ export const CustomerPortrait = ({customer}: CustomerDescriptionProps) => {
         Worker: Gypsy,
     };
 
-    return <Image src={srcMap[customer.appearance.type]}></Image>
+    return <Image src={srcMap[customer.appearance.type] ?? DEFAULT_IMAGE}></Image>
 }

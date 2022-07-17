@@ -27,6 +27,7 @@ export const appReducer = (state: RootState, action: AppAction) => {
     });
 }
 
+
 export const gameReducer = (game: GameState, action: GameAction) => {
     return produce(game, g => { 
         match(action, {
@@ -48,7 +49,7 @@ export const gameReducer = (game: GameState, action: GameAction) => {
                 const person: Person = {
                     name: 'Annika',
                     pronoun: she,
-                    appearance: Appearance.FamilyHead(),
+                    appearance: Appearance.Worker(),
                     wealth: Wealth.Poor,
                 }
                 g.activeReading = {

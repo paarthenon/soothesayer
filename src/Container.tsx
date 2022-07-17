@@ -8,11 +8,28 @@ import {
     Code,
     Grid,
     theme,
+    extendTheme,
 } from "@chakra-ui/react"
+import { mode } from '@chakra-ui/theme-tools';
 import {Provider} from "react-redux"
 import {PersistGate} from "redux-persist/integration/react"
 import {store, persister} from "redux/store"
 import {App} from "App"
+
+const myTheme = extendTheme({
+    config: {
+        initialColorMode: 'dark',
+        useSystemColorMode: false,
+    },
+    styles: {
+        global: (props: any) => ({
+          body: {
+            color: mode('red.900', '#531009')(props),
+            bg: mode('#DFD7D6', '#141214')(props),
+          },
+        }),
+      }
+});
 
 export const Container = () => (
     <Provider store={store}>
@@ -21,7 +38,7 @@ export const Container = () => (
                 Your app is loading.
             </div>
         }>
-            <ChakraProvider theme={theme}>
+            <ChakraProvider theme={myTheme}>
                 <Box textAlign="center" fontSize="xl">
                     <Grid minH="100vh" p={3}>
                         <VStack spacing={8}>
