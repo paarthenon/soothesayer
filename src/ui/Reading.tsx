@@ -22,27 +22,20 @@ export const Reading = () => {
 
     return (
         <Box margin={4}>
-            <Text>You commune with the Altar of Omens</Text>
-            <Text>Here is what the future has in store...</Text>
+            <Text>You commune with the Altar of fate, placing your palm flat against its top. Gold and silver coins litter the surface, stacked between melting candles.</Text>
+            <Text>The vision takes you. The mind's eye resolves to the beginning of an image...</Text>
 
             <Fade in={showText} style={{
                 transitionDuration: 'var(--chakra-transition-duration-ultra-slow)'
             }}>
                 <VStack gap={2} margin={4} opacity={.5}>
-                    <Text>Tyranel went to the city of Amaranth to pick up a package they inherited from their father.</Text>
-                    <Text>When he arrived, everything was more expensive than expected. He could only afford to stay in a shady part of town.</Text>
-                    <Text>Tyranel got mugged. They demanded his property. He fought back and was killed.</Text>
-                </VStack>
-            </Fade>
-
-            <Divider />
-
-            <Fade in={showText} style={{
-                transitionDuration: 'var(--chakra-transition-duration-ultra-slow)'
-            }}>
-                <VStack gap={2} margin={4} opacity={.5}>
-                    {reading.timeline.map(te => (
-                        <RenderEvent event={te} context={reading.context} />
+                    {reading.timeline.map((te, position) => (
+                        <RenderEvent event={te} context={reading.context} rerollFunc={metal => {
+                            dispatch(Action.AlterDice({
+                                position,
+                                rerollType: metal,
+                            }))
+                        }} />
                     ))}
                 </VStack>
             </Fade>

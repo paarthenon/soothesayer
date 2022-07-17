@@ -16,6 +16,7 @@ import { Love } from "./Love";
 import { Mugging } from "./Mugging";
 import { Prostitute } from "./Prostitute";
 import { Relic } from "./Relic";
+import {Metal} from "redux/actions";
 
 const ProfileIcon = (props: EventProps) => 
     ImageMap[props.event.type]
@@ -43,7 +44,7 @@ const RerollEventButtons = (props: EventProps) => {
     </>
 }
 
-export const RenderEvent = (props: EventProps) => <HStack>
+export const RenderEvent = (props: EventProps & {rerollFunc: (metal: Metal) => void}) => <HStack>
     <ProfileIcon {...props} />
     <RenderEventLine {...props}/>
     <RerollEventButtons {...props}/>
