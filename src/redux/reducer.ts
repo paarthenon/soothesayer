@@ -1,4 +1,5 @@
 import {Appearance, Person, Wealth} from 'core/person';
+import {she} from 'core/pronoun';
 import {View} from 'core/view';
 import produce from 'immer';
 import {just, match, matcher, types,} from 'variant';
@@ -31,7 +32,8 @@ export const gameReducer = (game: GameState, action: GameAction) => {
             GreetCustomer({}) {
                 const person: Person = {
                     name: 'Annika',
-                    apperance: Appearance.WasherWoman(),
+                    pronoun: she,
+                    apperance: Appearance.Worker(),
                     wealth: Wealth.Poor,
                 }
                 g.activeReading = {

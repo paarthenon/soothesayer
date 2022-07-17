@@ -1,4 +1,5 @@
 import {TypeNames, variant, VariantOf} from "variant";
+import {Pronoun} from "./pronoun";
 
 /**
  * Appearance represents a character type.
@@ -7,11 +8,11 @@ export const Appearance = variant({
     /**
      * Person in poor work-stained clothes
      */
-    WasherWoman: {},
+    Worker: {},
     /**
-     * Rich man in fine clothes
+     * Rich person in fine clothes
      */
-    FamilyPatriarch: {},
+    FamilyHead: {},
 })
 export type Appearance<T extends TypeNames<typeof Appearance> = undefined> = VariantOf<typeof Appearance, T>;
 
@@ -24,6 +25,7 @@ export enum Wealth {
 
 export interface Person {
     name: string;
+    pronoun: Pronoun;
     apperance: Appearance;
     wealth: Wealth;
 }

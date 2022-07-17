@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
 import {Action} from "redux/actions";
 import {useGame} from "redux/hooks";
-import {RenderEvent} from "./event/RenderEvent";
+import {RenderEventLine} from "./event/RenderEvent";
 
 export const Reading = () => {
     const dispatch = useDispatch();
@@ -34,7 +34,7 @@ export const Reading = () => {
                 </VStack>
             </Fade>
 
-            <RenderEvent
+            <RenderEventLine
                 context={{health: undefined, relationships: undefined, subject: customer} as any}
                 event={Event.Mugged({outcome: 'victory'})}
             />
