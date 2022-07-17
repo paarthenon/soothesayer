@@ -23,12 +23,12 @@ export const Reading = () => {
     return (
         <Box margin={4}>
             <Text>You commune with the Altar of fate, placing your palm flat against its top. Gold and silver coins litter the surface, stacked between melting candles.</Text>
-            <Text>The vision takes you. The mind's eye resolves to the beginning of an image...</Text>
+            <Text>The vision takes you. The mind's eye resolves to the beginning of an image... an image of a person that does not yet exist.</Text>
 
             <Fade in={showText} style={{
                 transitionDuration: 'var(--chakra-transition-duration-ultra-slow)'
             }}>
-                <VStack gap={2} margin={4} opacity={.5}>
+                <VStack gap={2} margin={4} opacity={.7}>
                     {reading.timeline.map((te, position) => (
                         <RenderEvent event={te} context={reading.context} rerollFunc={metal => {
                             dispatch(Action.AlterDice({

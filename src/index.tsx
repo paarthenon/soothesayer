@@ -4,6 +4,7 @@ import * as ReactDOM from "react-dom/client"
 import {Container} from "./Container"
 import reportWebVitals from "./reportWebVitals"
 import * as serviceWorker from "./serviceWorker"
+import './index.css';
 
 
 const container = document.getElementById("root")

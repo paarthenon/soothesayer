@@ -73,7 +73,7 @@ export const Game = () => {
             <Divider m={8} />
             <Link text='Main menu' goto={View.MainMenu()} />
 
-            <Modal isOpen={isOpen} onClose={() => {}}>
+            <Modal isOpen={isOpen} onClose={() => {}} id='fuckingmodal'>
                 <ModalOverlay />
                 <ModalContent>
                     <Reading />
