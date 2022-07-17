@@ -33,7 +33,7 @@ export const gameReducer = (game: GameState, action: GameAction) => {
                 const person: Person = {
                     name: 'Annika',
                     pronoun: she,
-                    apperance: Appearance.FamilyHead(),
+                    appearance: Appearance.FamilyHead(),
                     wealth: Wealth.Poor,
                 }
                 g.activeReading = {
