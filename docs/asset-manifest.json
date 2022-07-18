@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "./static/css/main.ab6c98e0.css",
+    "main.js": "./static/js/main.d033ae3e.js",
+    "static/js/377.e4a9d493.chunk.js": "./static/js/377.e4a9d493.chunk.js",
+    "static/media/cover.png": "./static/media/cover.fc9408a7d294bb47d117.png",
+    "static/media/Gypsy.png": "./static/media/Gypsy.4c6e8d15112fd3ae689a.png",
+    "static/media/Patriarch.png": "./static/media/Patriarch.5d294c97c178f8453da3.png",
+    "index.html": "./index.html",
+    "main.ab6c98e0.css.map": "./static/css/main.ab6c98e0.css.map",
+    "main.d033ae3e.js.map": "./static/js/main.d033ae3e.js.map",
+    "377.e4a9d493.chunk.js.map": "./static/js/377.e4a9d493.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ab6c98e0.css",
+    "static/js/main.d033ae3e.js"
+  ]
+}
