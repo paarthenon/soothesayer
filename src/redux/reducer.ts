@@ -1,11 +1,11 @@
 import {Appearance, Person, Wealth} from 'core/person';
 import {she} from 'core/pronoun';
-import { resultOpinion } from 'core/resultOpinion';
+import {resultOpinion} from 'core/resultOpinion';
 import {View} from 'core/view';
 import {genEvent} from 'gen/event';
-import { genPerson } from 'gen/person';
+import {genPerson} from 'gen/person';
 import produce from 'immer';
-import {just, match, matcher, types,} from 'variant';
+import {just, match, matcher, types} from 'variant';
 import {Action, AppAction, GameAction} from './actions';
 import {GameState, initState, RootState} from './state';
 
@@ -21,33 +21,34 @@ export const appReducer = (state: RootState, action: AppAction) => {
                 s.game = {
                     silver: 10,
                     gold: 1,
-                }
+                };
                 s.view = View.Game();
             },
-        })
+        });
     });
-}
-
+};
 
 export const gameReducer = (game: GameState, action: GameAction) => {
-    return produce(game, g => { 
+    return produce(game, g => {
         match(action, {
             AlterDice({position, rerollType}) {
-                if(rerollType == "gold" && g.activeReading != undefined){
-                    if(g.gold > 0){
+                if (rerollType == 'gold' && g.activeReading != undefined) {
+                    if (g.gold > 0) {
                         g.activeReading.timeline[position] = genEvent();
                         g.gold--;
                     }
                 }
-                if(rerollType == "silver" && g.activeReading != undefined){
-                    if(g.silver > 0){
-                        g.activeReading.timeline[position] = genEvent(g.activeReading.timeline[position].type);
+                if (rerollType == 'silver' && g.activeReading != undefined) {
+                    if (g.silver > 0) {
+                        g.activeReading.timeline[position] = genEvent(
+                            g.activeReading.timeline[position].type
+                        );
                         g.silver--;
                     }
                 }
             },
             GreetCustomer({}) {
-                const person: Person = genPerson()
+                const person: Person = genPerson();
                 g.activeReading = {
                     customer: person,
                     subject: person,
@@ -55,10 +56,10 @@ export const gameReducer = (game: GameState, action: GameAction) => {
                     timeline: [],
                     context: {
                         subject: person,
-                        tags: {}
+                        tags: {},
                     },
-                    payment: {gold: 0, silver: 0}
-                }
+                    payment: {gold: 0, silver: 0},
+                };
             },
             BeginReading() {
                 if (g.activeReading) {
@@ -70,26 +71,27 @@ export const gameReducer = (game: GameState, action: GameAction) => {
             },
             ReportReading() {
                 if (g.activeReading) {
-                    const opinion = resultOpinion(g.activeReading)
-                    const goldPayment = Math.max(Math.floor (opinion / 12), 0)
-                    const silverPayment = Math.max(Math.floor(3 + opinion / 6), 0)
-                    g.gold += goldPayment
-                    g.silver += silverPayment
+                    const opinion = resultOpinion(g.activeReading);
+                    const goldPayment = Math.max(Math.floor(opinion / 12), 0);
+                    const silverPayment = Math.max(Math.floor(3 + opinion / 6), 0);
+                    g.gold += goldPayment;
+                    g.silver += silverPayment;
                     g.activeReading.stage = 'conclusion';
-                    g.activeReading.payment = {gold: goldPayment, silver: silverPayment}
+                    g.activeReading.payment = {
+                        gold: goldPayment,
+                        silver: silverPayment,
+                    };
                 }
             },
-        })
-    })
-}
+        });
+    });
+};
 
 export const rootReducer = (state = initState, action: Action) => {
     return matcher(action)
         .when(types(AppAction), _ => appReducer(state, _))
-        .when(types(GameAction), _ => (
-            state.game
-                ? {...state, game: gameReducer(state.game, _)}
-                : state
-        ))
+        .when(types(GameAction), _ =>
+            state.game ? {...state, game: gameReducer(state.game, _)} : state
+        )
         .else(just(state)); // return state for unhandled actions
-}
+};

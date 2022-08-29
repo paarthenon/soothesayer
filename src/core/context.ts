@@ -12,10 +12,13 @@ type place = string;
 // export type Subject<T extends TypeNames<typeof Subject> = undefined> = VariantOf<typeof Subject, T>
 
 export const Situation = variant({
-    Home: fields<{place: string;}>(),
-    Traveling: fields<{from: string, to: string}>(),
-})
-export type Situation<T extends TypeNames<typeof Situation> = undefined> = VariantOf<typeof Situation, T>;
+    Home: fields<{place: string}>(),
+    Traveling: fields<{from: string; to: string}>(),
+});
+export type Situation<T extends TypeNames<typeof Situation> = undefined> = VariantOf<
+    typeof Situation,
+    T
+>;
 
 /**
  * This is the data-object used by the fate engine to calculate the likely events
@@ -29,4 +32,3 @@ export interface Context {
     // relationships: unknown;
     tags: {};
 }
-

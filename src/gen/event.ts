@@ -1,7 +1,20 @@
-import {ArrivalOutcome, BreakupOutcome, ChildOutcome, DrowningOutcome, Event, FightOutcome, ForkOutcome, FoundMoneyOutcome, LoveOutcome, MuggingOutcome, ProstituteOutcome, RelicOutcome} from "core/event";
-import {values} from "lodash";
-import {match, partial, TypeNames, types, TypesOf} from "variant";
-import chance from "./chance";
+import {
+    ArrivalOutcome,
+    BreakupOutcome,
+    ChildOutcome,
+    DrowningOutcome,
+    Event,
+    FightOutcome,
+    ForkOutcome,
+    FoundMoneyOutcome,
+    LoveOutcome,
+    MuggingOutcome,
+    ProstituteOutcome,
+    RelicOutcome,
+} from 'core/event';
+import {values} from 'lodash';
+import {match, partial, TypeNames, types, TypesOf} from 'variant';
+import chance from './chance';
 
 export function genEvent<T extends TypesOf<typeof Event>>(requestedType?: T) {
     const actualType = requestedType ?? chance.pickone(types(Event));
@@ -10,42 +23,48 @@ export function genEvent<T extends TypesOf<typeof Event>>(requestedType?: T) {
         Arrival: () => {
             const outcome = chance.pickone(values(ArrivalOutcome));
             return Event.Arrival({
-                outcome
-            })
+                outcome,
+            });
         },
         Breakup: () => {
             const outcome = chance.pickone(values(BreakupOutcome));
-            return Event.Breakup({outcome})
+            return Event.Breakup({outcome});
         },
         Child() {
             const outcome = chance.pickone(values(ChildOutcome));
-            return Event.Child({outcome})
+            return Event.Child({outcome});
         },
         Drowning() {
             const outcome = chance.pickone(values(DrowningOutcome));
-            return Event.Drowning({outcome})        },
+            return Event.Drowning({outcome});
+        },
         Fight() {
             const outcome = chance.pickone(values(FightOutcome));
-            return Event.Fight({outcome})        },
+            return Event.Fight({outcome});
+        },
         Fork() {
             const outcome = chance.pickone(values(ForkOutcome));
-            return Event.Fork({outcome})        },
+            return Event.Fork({outcome});
+        },
         FoundMoney() {
             const outcome = chance.pickone(values(FoundMoneyOutcome));
-            return Event.FoundMoney({outcome})        },
+            return Event.FoundMoney({outcome});
+        },
         Love() {
             const outcome = chance.pickone(values(LoveOutcome));
-            return Event.Love({outcome})        },
+            return Event.Love({outcome});
+        },
         Mugged() {
             const outcome = chance.pickone(values(MuggingOutcome));
-            return Event.Mugged({outcome})        },
+            return Event.Mugged({outcome});
+        },
         Prostitute() {
             const outcome = chance.pickone(values(ProstituteOutcome));
-            return Event.Prostitute({outcome})
+            return Event.Prostitute({outcome});
         },
         Relic() {
             const outcome = chance.pickone(values(RelicOutcome));
-            return Event.Relic({outcome})
+            return Event.Relic({outcome});
         },
-    })
+    });
 }

@@ -26,9 +26,9 @@ export interface Reading {
     timeline: Event[];
     context: Context;
     payment: {
-        gold: number,
-        silver: number
-    }
+        gold: number;
+        silver: number;
+    };
 }
 
 export interface TimelineEvent {
@@ -36,14 +36,9 @@ export interface TimelineEvent {
     event: Event;
 }
 
-export const ReadingStage = catalog([
-    'greeting',
-    'prophesy',
-    'conclusion',
-]);
+export const ReadingStage = catalog(['greeting', 'prophesy', 'conclusion']);
 export type ReadingStage = keyof typeof ReadingStage;
 
 export const initState: RootState = {
     view: View.MainMenu(),
-}
-
+};

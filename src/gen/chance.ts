@@ -7,4 +7,3 @@ export default chance;
 export function pickVariant<V extends VariantModule<string>>(v: V) {
     return chance.pickone(Object.values(v)) as V[keyof V];
 }
-

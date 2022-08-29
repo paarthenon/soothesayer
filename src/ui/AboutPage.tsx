@@ -1,6 +1,6 @@
-import {Box, Heading, List, ListItem, Text} from "@chakra-ui/react";
-import {View} from "core/view";
-import {Link} from "./Link";
+import {Box, Heading, List, ListItem, Text} from '@chakra-ui/react';
+import {View} from 'core/view';
+import {Link} from './Link';
 
 export const AboutPage = () => (
     <Box>
@@ -8,9 +8,8 @@ export const AboutPage = () => (
 
         <Heading>Credits & Attributions</Heading>
         <Text>
-            This game would not have been possible without the use 
-            of these wonderful freely available assets created by 
-            the community
+            This game would not have been possible without the use of these wonderful
+            freely available assets created by the community
         </Text>
 
         <List>
@@ -19,6 +18,6 @@ export const AboutPage = () => (
             </ListItem>
         </List>
 
-        <Link goto={View.MainMenu()} text='back' />
+        <Link goto={View.MainMenu()} text="back" />
     </Box>
-)
+);

@@ -9,5 +9,8 @@ export const View = variant({
      * Doing a "reading" of the future.
      */
     Reading: {},
-})
-export type View<T extends TypeNames<typeof View> = undefined> = VariantOf<typeof View, T>
+});
+export type View<T extends TypeNames<typeof View> = undefined> = VariantOf<
+    typeof View,
+    T
+>;

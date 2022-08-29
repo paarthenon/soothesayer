@@ -24,10 +24,11 @@ export const Link = ({text, goto, href, onClick, children}: LinkProps) => {
     const linkStyle: React.CSSProperties = {
         cursor: 'pointer',
         textDecoration: 'underline',
-    }
+    };
     return (
         <a style={linkStyle} onClick={click}>
-            {text}{children}
+            {text}
+            {children}
         </a>
     );
-}
+};

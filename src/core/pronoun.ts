@@ -18,7 +18,7 @@ export interface Pronoun {
     /**
      * Himself/Herself
      */
-    themself: string// themself, hirself
+    themself: string; // themself, hirself
 }
 
 export const he: Pronoun = {
@@ -75,4 +75,4 @@ export const you: Pronoun = {
     their: 'your',
     theirs: 'yours',
     themself: 'yourself',
-}
+};
