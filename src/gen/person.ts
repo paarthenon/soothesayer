@@ -1,31 +1,49 @@
 import {Appearance, Person, Wealth} from 'core/person';
-import {she} from 'core/pronoun';
+import {Pronoun, she, he} from 'core/pronoun';
 import chance from './chance';
 import {values} from 'lodash';
 
 export function genPerson(): Person {
     const appearance = chance.pickone(values(Appearance))();
-    const name = chance.name({gender: 'female'});
+    const pronoun = she;
+    const name = genName(pronoun);
 
     const person: Person = {
         name,
         appearance,
-        pronoun: she,
+        pronoun,
         wealth: Wealth.Poor,
     };
 
     return person;
 }
 
-export function genName() {
-    return chance.pickone([
-        'Margaret',
-        'Annika',
-        'Elidar',
-        'Ishkar',
-        'Selamin',
-        'Garth',
-        'Pelock',
-        'Melena',
-    ]);
+export const NAMES_FEMININE = [
+    'Margaret',
+    'Annika',
+    'Elidar',
+    'Ishkar',
+    'Selamin',
+    'Pelock',
+    'Melena',
+];
+
+export const NAMES_MASCULINE = [
+    'Roderick',
+    'Belan',
+    'Sej',
+    'Garth',
+    'Coradin',
+];
+
+export function genName(pronoun: Pronoun) {
+    switch (pronoun) {
+        case she:
+            return chance.pickone(NAMES_FEMININE);
+        case he:
+            return chance.pickone(NAMES_MASCULINE)
+        default:
+            return 'Somebody'
+    }
 }
+

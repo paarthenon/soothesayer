@@ -5,6 +5,6 @@ import {Container} from './Container';
 
 test('renders learn react link', () => {
     render(<Container />);
-    const linkElement = screen.getByText(/learn chakra/i);
+    const linkElement = screen.getByText(/New Game/i);
     expect(linkElement).toBeInTheDocument();
 });
