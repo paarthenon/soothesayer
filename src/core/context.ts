@@ -1,4 +1,4 @@
-import {fields, TypeNames, variant, VariantOf} from 'variant';
+import {catalog, fields, TypeNames, variant, VariantOf} from 'variant';
 import {Person} from './person';
 
 type place = string;
@@ -20,6 +20,12 @@ export type Situation<T extends TypeNames<typeof Situation> = undefined> = Varia
     T
 >;
 
+export const Health = catalog([
+    'Healthy',
+    'Injured',
+    'Dead',
+])
+export type Health = keyof typeof Health;
 /**
  * This is the data-object used by the fate engine to calculate the likely events
  * at any given time. For example you are not going to find a tasteful cafe while
@@ -28,7 +34,7 @@ export type Situation<T extends TypeNames<typeof Situation> = undefined> = Varia
 export interface Context {
     subject: Person;
     // situation: Situation;
-    // health: unknown;
+    health: Health;
     // relationships: unknown;
     tags: {};
 }

@@ -41,6 +41,7 @@ export const Reading = () => {
                 <VStack gap={2} margin={4} opacity={0.7}>
                     {reading.timeline.map((te, position) => (
                         <RenderEvent
+                            key={position}
                             event={te}
                             context={reading.context}
                             rerollFunc={metal => {

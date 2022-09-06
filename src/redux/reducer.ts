@@ -1,9 +1,11 @@
+import {Health} from 'core/context';
 import {Appearance, Person, Wealth} from 'core/person';
 import {she} from 'core/pronoun';
 import {resultOpinion} from 'core/resultOpinion';
 import {View} from 'core/view';
 import {genEvent} from 'gen/event';
 import {genPerson} from 'gen/person';
+import {genTimeline} from 'gen/timeline';
 import produce from 'immer';
 import {just, match, matcher, types} from 'variant';
 import {Action, AppAction, GameAction} from './actions';
@@ -56,6 +58,7 @@ export const gameReducer = (game: GameState, action: GameAction) => {
                     timeline: [],
                     context: {
                         subject: person,
+                        health: Health.Healthy,
                         tags: {},
                     },
                     payment: {gold: 0, silver: 0},
@@ -64,9 +67,9 @@ export const gameReducer = (game: GameState, action: GameAction) => {
             BeginReading() {
                 if (g.activeReading) {
                     g.activeReading.stage = 'prophesy';
-                    g.activeReading.timeline.push(genEvent());
-                    g.activeReading.timeline.push(genEvent());
-                    g.activeReading.timeline.push(genEvent());
+                    const timeline = genTimeline(g.activeReading.context);
+
+                    g.activeReading.timeline.push(...timeline);
                 }
             },
             ReportReading() {
