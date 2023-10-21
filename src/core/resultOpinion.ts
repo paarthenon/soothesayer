@@ -1,5 +1,5 @@
 import {Reading} from 'redux/state';
-import {catalog, constant, match} from 'variant';
+import {catalog, constant, lookup, match} from 'variant';
 import {Event} from './event';
 import {Person} from './person';
 
@@ -35,6 +35,11 @@ export function resultOpinion(reading: Reading) {
  */
 export function eventOpinion(person: Person, event: Event) {
     return match(event, {
+        Ancestor: ({outcome}) => match(outcome, lookup({
+            Prostitute: Opinion.dislike,
+            Royalty: Opinion.love,
+            Warlord: Opinion.hate,
+        })),
         Relic: ({outcome}) =>
             match(outcome, {
                 pass: constant(Opinion.neutral),

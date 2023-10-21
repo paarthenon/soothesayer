@@ -18,11 +18,13 @@ import {Prostitute} from './Prostitute';
 import {Relic} from './Relic';
 import {Metal} from 'redux/actions';
 import {useGame} from 'redux/hooks';
+import {Ancestor} from './Ancestor';
 
 const ProfileIcon = (props: EventProps) => ImageMap[props.event.type];
 
 const RenderEventLine = (props: EventProps) => {
     return match(props.event, {
+        Ancestor: event => <Ancestor event={event} context={props.context} />,
         Relic: event => <Relic event={event} context={props.context} />,
         FoundMoney: event => <FoundMoney event={event} context={props.context} />,
         Drowning: event => <Drowning event={event} context={props.context} />,

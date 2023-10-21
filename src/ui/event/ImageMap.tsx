@@ -1,5 +1,6 @@
 import {Icon} from '@chakra-ui/react';
 import {Event} from 'core/event';
+import {RiParentLine} from 'react-icons/ri';
 import {GiBuyCard} from 'react-icons/gi';
 import {GiSwapBag} from 'react-icons/gi';
 import {GiDrowning} from 'react-icons/gi';
@@ -13,6 +14,7 @@ import {GiBrokenHeart} from 'react-icons/gi';
 import {GiStorkDelivery} from 'react-icons/gi';
 
 export const ImageMap: Record<Event['type'], JSX.Element> = {
+    Ancestor: <Icon as={RiParentLine} aria-label="ancestor revealed" />,
     Relic: <Icon as={GiBuyCard} aria-label="relic" />,
     FoundMoney: <Icon as={GiSwapBag} aria-label="found money" />,
     Drowning: <Icon as={GiDrowning} aria-label="drowning" />,

@@ -68,6 +68,10 @@ export type BreakupOutcome = keyof typeof BreakupOutcome;
 export const ChildOutcome = catalog(['healthy', 'sick', 'betrayal', 'stillbirth']);
 export type ChildOutcome = keyof typeof ChildOutcome;
 
+
+export const AncestorOutcome = catalog(['Royalty', 'Warlord', 'Prostitute']);
+export type AncestorOutcome = keyof typeof AncestorOutcome;
+
 export const Event = variant({
     Relic: fields<{
         outcome: RelicOutcome;
@@ -101,6 +105,9 @@ export const Event = variant({
     }>(),
     Child: fields<{
         outcome: ChildOutcome;
+    }>(),
+    Ancestor: fields<{
+        outcome: AncestorOutcome;
     }>(),
 });
 export type Event<T extends TypeNames<typeof Event> = undefined> = VariantOf<

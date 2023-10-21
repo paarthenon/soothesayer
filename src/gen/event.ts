@@ -1,4 +1,5 @@
 import {
+    AncestorOutcome,
     ArrivalOutcome,
     BreakupOutcome,
     ChildOutcome,
@@ -20,6 +21,10 @@ export function genEvent<T extends TypesOf<typeof Event>>(requestedType?: T) {
     const actualType = requestedType ?? chance.pickone(types(Event));
 
     return match(actualType, {
+        Ancestor: () => {
+            const outcome = chance.pickone(values(AncestorOutcome));
+            return Event.Ancestor({outcome});
+        },
         Arrival: () => {
             const outcome = chance.pickone(values(ArrivalOutcome));
             return Event.Arrival({
