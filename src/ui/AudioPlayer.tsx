@@ -4,11 +4,17 @@ import Song1 from '../music/Stay the Course.mp3';
 const audioCtx = new AudioContext();
 
 export const AudioPlayer = () => (
-    <Box>
+    <Box style={{
+    }}>
         <audio
             controls
-            src={Song1}>
-                Your browser does not support the audio element.
-            </audio>
+            src={Song1}
+            style={{
+                width: '100%',
+                marginTop: '20px',
+            }}
+        >
+            Your browser does not support the audio element.
+        </audio>
     </Box>
 );

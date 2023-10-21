@@ -22,15 +22,17 @@ export const Reading = () => {
 
     return (
         <Box margin={4}>
-            <Text>
-                You commune with the Altar of fate, placing your palm flat against its
-                top. Gold and silver coins litter the surface, stacked between melting
-                candles.
-            </Text>
-            <Text>
-                The vision takes you. The mind's eye resolves to the beginning of an
-                image... an image of a person that does not yet exist.
-            </Text>
+            <VStack>
+                <Text>
+                    You commune with the Altar of fate, placing your palm flat against its
+                    top. Gold and silver coins litter the surface, stacked between melting
+                    candles.
+                </Text>
+                <Text>
+                    The vision takes you. Your mind's eye resolves to the beginning of an
+                    image... an image of a person that does not yet exist.
+                </Text>
+            </VStack>
 
             <Fade
                 in={showText}

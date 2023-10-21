@@ -159,7 +159,7 @@ export const GreetCustomer = () => {
             <VStack spacing={4}>
                 <Text>
                     The bell rings marking another customer coming through the door. You
-                    wave at {customer.pronoun.them}, welcoming {customer.name} into your
+                    wave to {customer.pronoun.them}, welcoming {customer.name} into your
                     shop.
                 </Text>
                 <Text>
