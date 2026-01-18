@@ -28,8 +28,8 @@ import {CustomerDescription, CustomerPortrait} from './CustomerDescription';
 import {Reading} from './Reading';
 
 export const Game = () => {
-    const gold = useGame(g => g.gold);
-    const silver = useGame(g => g.silver);
+    const gold = useGame(g => g.coins.gold);
+    const silver = useGame(g => g.coins.silver);
 
     const dispatch = useDispatch();
 
@@ -43,8 +43,6 @@ export const Game = () => {
     function beginReading() {
         dispatch(Action.BeginReading());
     }
-
-    console.log('customer', customer);
 
     const isOpen = useGame(g =>
         g.activeReading ? g.activeReading.stage === 'prophesy' : false
@@ -132,13 +130,15 @@ export const CustomerReaction = () => {
 
     reaction = caps(reaction);
 
-    const payment =
-        caps(reading.customer.pronoun.they) +
-        ' hands you ' +
-        reading.payment.gold +
-        ' gold coin(s) and ' +
-        reading.payment.silver +
-        ' silver coin(s).';
+    const payment = (reading.payment.gold == 0 && reading.payment.silver == 0)
+        ? caps(reading.customer.pronoun.they) + ' refuses to pay.'
+        : caps(reading.customer.pronoun.they) +
+            ' hands you ' +
+            reading.payment.gold +
+            ' gold coin(s) and ' +
+            reading.payment.silver +
+            ' silver coin(s).'
+
 
     return (
         <>

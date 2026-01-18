@@ -10,9 +10,15 @@ export interface RootState {
 }
 
 export interface GameState {
+    coins: CoinPurse;
+    activeReading?: Reading;
+}
+
+export interface CoinPurse {
     silver: number;
     gold: number;
-    activeReading?: Reading;
+    // TODO: Consider retaining some identity of who the coin came from.
+    soul: number;
 }
 
 export interface Reading {

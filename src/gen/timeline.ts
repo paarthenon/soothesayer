@@ -6,13 +6,13 @@ import {genEvent} from './event';
 
 
 export function genTimeline(originalContext: Context, numEvents?: number) {
-    const goal = numEvents ?? chance.integer({min: 3, max: 5});
+    const eventCount = numEvents ?? chance.integer({min: 2, max: 5});
 
     let timeline: Event[] = []; 
     let context = originalContext;
 
-    console.log('Generating timeline for', goal, 'events.')
-    for (let i = 0; i < goal; i++) {
+    console.log('Generating timeline for', eventCount, 'events.')
+    for (let i = 0; i < eventCount; i++) {
         let event = genEvent();
 
         match(event, partial({

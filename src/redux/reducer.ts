@@ -8,7 +8,7 @@ import {genPerson} from 'gen/person';
 import {genTimeline} from 'gen/timeline';
 import produce from 'immer';
 import {just, match, matcher, types} from 'variant';
-import {Action, AppAction, GameAction} from './actions';
+import {Action, AppAction, DebugAction, GameAction} from './actions';
 import {GameState, initState, RootState} from './state';
 
 const noop = () => {};
@@ -21,8 +21,11 @@ export const appReducer = (state: RootState, action: AppAction) => {
             },
             StartGame() {
                 s.game = {
-                    silver: 10,
-                    gold: 1,
+                    coins: {
+                        silver: 10,
+                        gold: 0,
+                        soul: 0,
+                    }
                 };
                 s.view = View.Game();
             },
@@ -35,17 +38,17 @@ export const gameReducer = (game: GameState, action: GameAction) => {
         match(action, {
             AlterDice({position, rerollType}) {
                 if (rerollType == 'gold' && g.activeReading != undefined) {
-                    if (g.gold > 0) {
+                    if (g.coins.gold > 0) {
                         g.activeReading.timeline[position] = genEvent();
-                        g.gold--;
+                        g.coins.gold--;
                     }
                 }
                 if (rerollType == 'silver' && g.activeReading != undefined) {
-                    if (g.silver > 0) {
+                    if (g.coins.silver > 0) {
                         g.activeReading.timeline[position] = genEvent(
                             g.activeReading.timeline[position].type
                         );
-                        g.silver--;
+                        g.coins.silver--;
                     }
                 }
             },
@@ -77,8 +80,8 @@ export const gameReducer = (game: GameState, action: GameAction) => {
                     const opinion = resultOpinion(g.activeReading);
                     const goldPayment = Math.max(Math.floor(opinion / 12), 0);
                     const silverPayment = Math.max(Math.floor(3 + opinion / 6), 0);
-                    g.gold += goldPayment;
-                    g.silver += silverPayment;
+                    g.coins.gold += goldPayment;
+                    g.coins.silver += silverPayment;
                     g.activeReading.stage = 'conclusion';
                     g.activeReading.payment = {
                         gold: goldPayment,
@@ -90,11 +93,20 @@ export const gameReducer = (game: GameState, action: GameAction) => {
     });
 };
 
+export const debugReducer = (state: RootState, action: DebugAction) => {
+    return match(action, {
+        ResetEverything() {
+            return initState;
+        }
+    })
+}
+
 export const rootReducer = (state = initState, action: Action) => {
     return matcher(action)
         .when(types(AppAction), _ => appReducer(state, _))
         .when(types(GameAction), _ =>
             state.game ? {...state, game: gameReducer(state.game, _)} : state
         )
+        .when(types(DebugAction), _ => debugReducer(state, _))
         .else(just(state)); // return state for unhandled actions
 };

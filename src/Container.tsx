@@ -35,13 +35,7 @@ export const Container = () => (
     <Provider store={store}>
         <PersistGate persistor={persister} loading={<div>Your app is loading.</div>}>
             <ChakraProvider theme={myTheme}>
-                <Box textAlign="center" fontSize="xl">
-                    <Grid minH="100vh" p={3}>
-                        <VStack spacing={8}>
-                            <App />
-                        </VStack>
-                    </Grid>
-                </Box>
+                <App />
             </ChakraProvider>
         </PersistGate>
     </Provider>

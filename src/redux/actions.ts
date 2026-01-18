@@ -31,9 +31,16 @@ export type GameAction<T extends TypeNames<typeof GameAction> = undefined> = Var
     T
 >;
 
+export const DebugAction = variant({
+    ResetEverything: {},
+})
+export type DebugAction<T extends TypeNames<typeof DebugAction> = undefined> = VariantOf<typeof DebugAction, T>;
+
+
 export const Action = variant({
     ...AppAction,
     ...GameAction,
+    ...DebugAction,
 });
 export type Action<T extends TypeNames<typeof Action> = undefined> = VariantOf<
     typeof Action,

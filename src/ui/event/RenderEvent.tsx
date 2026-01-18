@@ -40,8 +40,8 @@ const RenderEventLine = (props: EventProps) => {
 };
 
 const RerollEventButtons = (props: EventProps & {rerollFunc: (metal: Metal) => void}) => {
-    const hasGold = useGame(g => g.gold) > 0;
-    const hasSilver = useGame(g => g.silver) > 0;
+    const hasGold = useGame(g => g.coins.gold) > 0;
+    const hasSilver = useGame(g => g.coins.silver) > 0;
     return (
         <>
             <IconButton

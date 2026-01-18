@@ -4,6 +4,7 @@ import {caps} from 'core/stringUtil';
 import {match} from 'variant';
 import Patriarch from 'img/Patriarch.png';
 import Gypsy from 'img/Gypsy.png';
+import Mercenary from 'img/Mercenary.jpg';
 
 interface CustomerDescriptionProps {
     customer: Person;
@@ -23,6 +24,12 @@ export const CustomerDescription = ({customer}: CustomerDescriptionProps) => {
                 fabric is wrinkled and lightly stained, but functional.{' '}
             </>
         ),
+        TravelingSoldier: _ => (
+            <>
+                {caps(customer.pronoun.they)} is sporting a sharp uniform, with reinforced panels
+                along {customer.pronoun.their} chestplate and leggings.
+            </>
+        )
     });
 };
 
@@ -31,6 +38,7 @@ export const CustomerPortrait = ({customer}: CustomerDescriptionProps) => {
     let srcMap: Record<Appearance['type'], string> = {
         FamilyHead: Patriarch,
         Worker: Gypsy,
+        TravelingSoldier: Mercenary,
     };
 
     return <Image src={srcMap[customer.appearance.type] ?? DEFAULT_IMAGE}></Image>;

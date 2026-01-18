@@ -26,6 +26,8 @@ export const NAMES_FEMININE = [
     'Selamin',
     'Pelock',
     'Melena',
+    'Farah',
+    'Liliana',
 ];
 
 export const NAMES_MASCULINE = [
@@ -34,7 +36,13 @@ export const NAMES_MASCULINE = [
     'Sej',
     'Garth',
     'Coradin',
+    'Roshan',
 ];
+
+export const NAMES_NEUTRAL = [
+    'Sasha',
+    'Kim',
+]
 
 export function genName(pronoun: Pronoun) {
     switch (pronoun) {

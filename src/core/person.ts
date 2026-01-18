@@ -24,6 +24,7 @@ export const Appearance = variant({
      * Rich person in fine clothes
      */
     FamilyHead: {},
+    TravelingSoldier: {},
 });
 export type Appearance<T extends TypeNames<typeof Appearance> = undefined> = VariantOf<
     typeof Appearance,
