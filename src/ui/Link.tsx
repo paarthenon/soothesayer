@@ -1,11 +1,11 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
-import {View} from 'core/view';
+import {MenuView} from 'core/view';
 import {Action} from 'redux/actions';
 
 export interface LinkProps {
     text?: string;
-    goto?: View;
+    goto?: MenuView;
     href?: string;
     onClick?: () => void;
     children?: React.ReactNode;

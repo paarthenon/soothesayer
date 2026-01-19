@@ -1,5 +1,5 @@
 import {Box, Heading, List, ListItem, Text} from '@chakra-ui/react';
-import {View} from 'core/view';
+import {MenuView} from 'core/view';
 import {Link} from './Link';
 
 export const AboutPage = () => (
@@ -23,6 +23,6 @@ export const AboutPage = () => (
             </ListItem>
         </List>
 
-        <Link goto={View.MainMenu()} text="back" />
+        <Link goto={MenuView.MainMenu()} text="back" />
     </Box>
 );

@@ -11,7 +11,6 @@ export const AudioPlayer = () => (
             src={Song1}
             style={{
                 width: '100%',
-                marginTop: '20px',
             }}
         >
             Your browser does not support the audio element.

@@ -14,6 +14,13 @@ import {Pronoun} from './pronoun';
  * - https://fineartamerica.com/featured/carmen-art-dozen.html (neutral woman)
  * - https://fineartamerica.com/featured/portrait-of-miss-katherine-elizabeth-lewis-art-dozen.html (aristocratic woman)
  * - https://fineartamerica.com/featured/portrait-of-a-young-man-by-hans-motionage-designs.html (young man)
+ * 
+ * - https://www.nga.gov/artworks/79-self-portrait
+ * - https://www.nga.gov/artworks/183327-monsieur-aristide-briand-former-premier-france
+ * - https://www.nga.gov/artworks/41578-gypsy-woman-mandolin
+ * - https://www.nga.gov/artworks/56413-salomon-de-bray-formerly-jan-van-goyen
+ * - https://www.nga.gov/artworks/43598-lord-algernon-percy
+ * 
  */
 export const Appearance = variant({
     /**
@@ -39,6 +46,7 @@ export enum Wealth {
 }
 
 export interface Person {
+    id: string;
     name: string;
     pronoun: Pronoun;
     appearance: Appearance;

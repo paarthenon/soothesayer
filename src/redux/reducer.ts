@@ -2,7 +2,7 @@ import {Health} from 'core/context';
 import {Appearance, Person, Wealth} from 'core/person';
 import {she} from 'core/pronoun';
 import {resultOpinion} from 'core/resultOpinion';
-import {View} from 'core/view';
+import {View, MenuView} from 'core/view';
 import {genEvent} from 'gen/event';
 import {genPerson} from 'gen/person';
 import {genTimeline} from 'gen/timeline';
@@ -10,8 +10,7 @@ import produce from 'immer';
 import {just, match, matcher, types} from 'variant';
 import {Action, AppAction, DebugAction, GameAction} from './actions';
 import {GameState, initState, RootState} from './state';
-
-const noop = () => {};
+import {STARTING_COINS_GOLD, STARTING_COINS_SILVER, STARTING_COINS_SOUL} from 'gen/defaults';
 
 export const appReducer = (state: RootState, action: AppAction) => {
     return produce(state, s => {
@@ -22,12 +21,15 @@ export const appReducer = (state: RootState, action: AppAction) => {
             StartGame() {
                 s.game = {
                     coins: {
-                        silver: 10,
-                        gold: 0,
-                        soul: 0,
-                    }
+                        silver: STARTING_COINS_SILVER,
+                        gold: STARTING_COINS_GOLD,
+                        soul: STARTING_COINS_SOUL,
+                    },
+                    people: {},
+
+                    view: View.Home(),
                 };
-                s.view = View.Game();
+                s.view = MenuView.Game();
             },
         });
     });

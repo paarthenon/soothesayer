@@ -1,17 +1,19 @@
 import {Context} from 'core/context';
 import {Event} from 'core/event';
 import {Person} from 'core/person';
-import {View} from 'core/view';
+import {View, MenuView} from 'core/view';
 import {catalog, fields, TypeNames, variant, VariantOf} from 'variant';
 
 export interface RootState {
     game?: GameState;
-    view: View;
+    view: MenuView;
 }
 
 export interface GameState {
     coins: CoinPurse;
     activeReading?: Reading;
+    people: Record<string, Person>;
+    view: View;
 }
 
 export interface CoinPurse {
@@ -46,5 +48,5 @@ export const ReadingStage = catalog(['greeting', 'prophesy', 'conclusion']);
 export type ReadingStage = keyof typeof ReadingStage;
 
 export const initState: RootState = {
-    view: View.MainMenu(),
+    view: MenuView.MainMenu(),
 };

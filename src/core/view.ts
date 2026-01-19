@@ -1,16 +1,22 @@
-import {TypeNames, variant, VariantOf} from 'variant';
+import {fields, TypeNames, variant, VariantOf} from 'variant';
 
-export const View = variant({
+export const MenuView = variant({
     About: {},
     Game: {},
     MainMenu: {},
     Options: {},
-    /**
-     * Doing a "reading" of the future.
-     */
-    Reading: {},
 });
-export type View<T extends TypeNames<typeof View> = undefined> = VariantOf<
-    typeof View,
+export type MenuView<T extends TypeNames<typeof MenuView> = undefined> = VariantOf<
+    typeof MenuView,
     T
 >;
+
+export const View = variant({
+    Home: {},
+    Reading: fields<{
+        customerId: string;
+    }>(),
+    People_debug: {},
+})
+export type View<T extends TypeNames<typeof View> = undefined> = VariantOf<typeof View, T>;
+

@@ -3,10 +3,11 @@ import {Event} from 'core/event';
 import {match, partial} from 'variant';
 import chance from './chance';
 import {genEvent} from './event';
+import {MAXIMUM_EVENT_COUNT, MINIMUM_EVENT_COUNT} from './defaults';
 
 
 export function genTimeline(originalContext: Context, numEvents?: number) {
-    const eventCount = numEvents ?? chance.integer({min: 2, max: 5});
+    const eventCount = numEvents ?? chance.integer({min: MINIMUM_EVENT_COUNT, max: MAXIMUM_EVENT_COUNT});
 
     let timeline: Event[] = []; 
     let context = originalContext;

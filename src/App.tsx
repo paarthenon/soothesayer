@@ -38,7 +38,6 @@ export function App() {
                                 Game: _ => <Game />,
                                 MainMenu: _ => <MainMenu />,
                                 Options: _ => <OptionsPage />,
-                                Reading: _ => <div>Unimplemented</div>,
                             })}
                         </VStack>
                     </Grid>

@@ -1,4 +1,4 @@
-import {he, she} from 'core/pronoun';
+import {he, she} from '../core/pronoun';
 import {genName, genPerson, NAMES_FEMININE, NAMES_MASCULINE} from './person';
 
 test('female name gen', () => {

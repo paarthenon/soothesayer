@@ -14,9 +14,14 @@ import {
     RelicOutcome,
 } from 'core/event';
 import {values} from 'lodash';
-import {match, partial, TypeNames, types, TypesOf} from 'variant';
+import {match, types, TypesOf} from 'variant';
 import chance from './chance';
 
+/**
+ * Generate one event of the timeline (including outcome)
+ * @param requestedType specific type of event.
+ * @returns 
+ */
 export function genEvent<T extends TypesOf<typeof Event>>(requestedType?: T) {
     const actualType = requestedType ?? chance.pickone(types(Event));
 
