@@ -9,14 +9,20 @@ import {genTimeline} from 'gen/timeline';
 import produce from 'immer';
 import {just, match, matcher, types} from 'variant';
 import {Action, AppAction, DebugAction, GameAction} from './actions';
-import {GameState, initState, RootState} from './state';
-import {STARTING_COINS_GOLD, STARTING_COINS_SILVER, STARTING_COINS_SOUL} from 'gen/defaults';
+import {GameState, initState, ReadingStage, RootState} from './state';
+import {STARTING_COINS_GOLD, STARTING_COINS_SILVER, STARTING_COINS_SOUL, TOWN_NAMES} from 'gen/defaults';
+import chance from 'gen/chance';
 
 export const appReducer = (state: RootState, action: AppAction) => {
     return produce(state, s => {
         match(action, {
-            GoTo({payload}) {
+            GoToMenuView({payload}) {
                 s.view = payload;
+            },
+            GoTo({payload}) {
+                if (s.game) {
+                    s.game.view = payload;
+                }
             },
             StartGame() {
                 s.game = {
@@ -26,8 +32,10 @@ export const appReducer = (state: RootState, action: AppAction) => {
                         soul: STARTING_COINS_SOUL,
                     },
                     people: {},
-
-                    view: View.Home(),
+                    town: {
+                        name: chance.pickone(TOWN_NAMES),
+                    },
+                    view: View.Tutorial(),
                 };
                 s.view = MenuView.Game();
             },
@@ -56,10 +64,11 @@ export const gameReducer = (game: GameState, action: GameAction) => {
             },
             GreetCustomer({}) {
                 const person: Person = genPerson();
+                g.people[person.id] = person;
                 g.activeReading = {
                     customer: person,
                     subject: person,
-                    stage: 'greeting',
+                    stage: ReadingStage.greeting,
                     timeline: [],
                     context: {
                         subject: person,
@@ -71,7 +80,7 @@ export const gameReducer = (game: GameState, action: GameAction) => {
             },
             BeginReading() {
                 if (g.activeReading) {
-                    g.activeReading.stage = 'prophesy';
+                    g.activeReading.stage = ReadingStage.prophesy;
                     const timeline = genTimeline(g.activeReading.context);
 
                     g.activeReading.timeline.push(...timeline);
@@ -84,7 +93,7 @@ export const gameReducer = (game: GameState, action: GameAction) => {
                     const silverPayment = Math.max(Math.floor(3 + opinion / 6), 0);
                     g.coins.gold += goldPayment;
                     g.coins.silver += silverPayment;
-                    g.activeReading.stage = 'conclusion';
+                    g.activeReading.stage = ReadingStage.conclusion;
                     g.activeReading.payment = {
                         gold: goldPayment,
                         silver: silverPayment,

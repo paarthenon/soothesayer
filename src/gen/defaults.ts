@@ -40,3 +40,9 @@ export const NAMES_NEUTRAL = [
     'Sasha',
     'Kim',
 ]
+
+export const TOWN_NAMES = [
+    'Atenhal',
+    'Fordham',
+    'Wraeth',
+]

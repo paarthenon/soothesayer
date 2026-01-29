@@ -4,12 +4,14 @@ import {
     Center,
     Divider,
     HStack,
+    List,
     Modal,
     ModalContent,
     ModalOverlay,
     Text,
+    VStack,
 } from '@chakra-ui/react';
-import {MenuView} from 'core/view';
+import {MenuView, View} from 'core/view';
 import {useDispatch} from 'react-redux';
 import {Action} from 'redux/actions';
 import {useGame} from 'redux/hooks';
@@ -18,11 +20,14 @@ import {Reading as ReadingView} from './Reading';
 import {ReadingStage} from 'redux/state';
 import {CustomerReaction} from './CustomerReaction';
 import {GreetCustomer} from './GreetCustomer';
+import {match} from 'variant';
+import {TutorialPage} from './TutorialPage';
+import {PeoplePageDebug} from './PeoplePage';
 
 export const Game = () => {
     const gold = useGame(g => g.coins.gold);
     const silver = useGame(g => g.coins.silver);
-    
+
     const view = useGame(g => g.view);
 
     const dispatch = useDispatch();
@@ -41,47 +46,63 @@ export const Game = () => {
     const isOpen = useGame(g =>
         g.activeReading ? g.activeReading.stage === ReadingStage.prophesy : false
     );
+
     return (
-        <Box>
-            <Center>
-                <HStack>
-                    <Box>
-                        <Text>Gold</Text>
-                        <Text>{gold}</Text>
-                    </Box>
-                    <Box>
-                        <Text>Silver</Text>
-                        <Text>{silver}</Text>
-                    </Box>
-                </HStack>
-            </Center>
+        <Box className='target'>
+            {match(view, {
+                Home: () => {
+                    return <>
+                        <Center>
+                            <HStack>
+                                <Box>
+                                    <Text>Gold</Text>
+                                    <Text>{gold}</Text>
+                                </Box>
+                                <Box>
+                                    <Text>Silver</Text>
+                                    <Text>{silver}</Text>
+                                </Box>
+                            </HStack>
+                        </Center>
 
-            {customer && (
-                <>
-                    <GreetCustomer customer={customer} />
-                </>
-            )}
+                        {customer && (
+                            <>
+                                <GreetCustomer customer={customer} />
+                            </>
+                        )}
 
-            <Box padding={8} maxWidth={800}>
-                {reading?.stage === ReadingStage.greeting && (
-                    <>
-                        <Button onClick={beginReading}>Begin reading</Button>
+                        <Box padding={8} maxWidth={800}>
+                            {reading?.stage === ReadingStage.greeting && (
+                                <>
+                                    <Button onClick={beginReading}>Begin reading</Button>
+                                </>
+                            )}
+
+                            {reading?.stage === ReadingStage.conclusion ? (
+                                <Text>
+                                    <CustomerReaction reading={reading} />
+                                </Text>
+                            ) : null}
+
+                            {(reading == undefined || reading.stage === ReadingStage.conclusion) && (
+                                <Button onClick={greetCustomer}>Greet new customer</Button>
+                            )}
+                        </Box>
                     </>
-                )}
+                },
+                People_debug: () => <PeoplePageDebug />,
+                Reading: () => <div>Reading</div>,
+                Tutorial: () => <TutorialPage />,
+            })}
 
-                {reading?.stage === ReadingStage.conclusion ? (
-                    <Text>
-                        <CustomerReaction reading={reading} />
-                    </Text>
-                ) : null}
 
-                {(reading == undefined || reading.stage === ReadingStage.conclusion) && (
-                    <Button onClick={greetCustomer}>Greet new customer</Button>
-                )}
-            </Box>
-
-            <Divider m={8} />
-            <Link text="Main menu" goto={MenuView.MainMenu()} />
+            <Divider my={8} />
+            <HStack>
+                <Link text="Main menu" goto={MenuView.MainMenu()} />
+                <Link text="Home" goto={View.Home()} />
+                <Link text="People list" goto={View.People_debug()} />
+                <Link text="Tutorial" goto={View.Tutorial()} />
+            </HStack>
 
             <Modal isOpen={isOpen} onClose={() => {}} id="fuckingmodal">
                 <ModalOverlay />

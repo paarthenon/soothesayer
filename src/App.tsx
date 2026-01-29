@@ -21,13 +21,13 @@ export function App() {
 
     return (
         <ErrorBoundary fallback={
-            <div>
+            <Box>
                 The application has entered an error state.
 
                 <Button onClick={resetEverything}>
                     Reset
                 </Button>
-            </div>
+            </Box>
         }>
             <Box className="App">
                 <Box textAlign="center" fontSize="xl">

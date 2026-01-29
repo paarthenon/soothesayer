@@ -50,8 +50,5 @@ export interface Person {
     name: string;
     pronoun: Pronoun;
     appearance: Appearance;
-    /**
-     * @deprecated DON'T USE IT. Not enough time.
-     */
     wealth: Wealth;
 }

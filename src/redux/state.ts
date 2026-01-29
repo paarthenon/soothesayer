@@ -9,10 +9,15 @@ export interface RootState {
     view: MenuView;
 }
 
+export interface Town {
+    name: string;
+}
+
 export interface GameState {
     coins: CoinPurse;
     activeReading?: Reading;
     people: Record<string, Person>;
+    town: Town;
     view: View;
 }
 

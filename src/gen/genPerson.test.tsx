@@ -1,5 +1,6 @@
 import {he, she} from '../core/pronoun';
-import {genName, genPerson, NAMES_FEMININE, NAMES_MASCULINE} from './person';
+import {NAMES_FEMININE, NAMES_MASCULINE} from './defaults';
+import {genName, genPerson} from './person';
 
 test('female name gen', () => {
     const name = genName(she);

@@ -1,13 +1,14 @@
 import {Person} from 'core/person';
 import {fields, payload, TypeNames, variant, VariantOf} from 'variant';
-import {MenuView} from '../core/view';
+import {MenuView, View} from '../core/view';
 
 export const Metal = variant(['gold', 'silver']);
 export type Metal = keyof typeof Metal;
 
 export const AppAction = variant({
     StartGame: {},
-    GoTo: payload<MenuView>(),
+    GoToMenuView: payload<MenuView>(),
+    GoTo: payload<View>(),
 });
 export type AppAction<T extends TypeNames<typeof AppAction> = undefined> = VariantOf<
     typeof AppAction,

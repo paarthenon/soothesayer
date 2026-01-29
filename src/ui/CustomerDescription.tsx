@@ -9,6 +9,7 @@ import PatriarchFem from 'img/Patriarch.png';
 import PatriarchMasc from 'img/Rembrandt Self-portrait 1937.1.72.jpg';
 import Gypsy from 'img/Gypsy.png';
 import Mercenary from 'img/Mercenary.jpg';
+import BeggarMale from 'img/MaleBeggar - 1987.1140.1.jpg';
 
 interface CustomerDescriptionProps {
     customer: Person;
@@ -41,7 +42,7 @@ export const CustomerPortrait = ({customer}: CustomerDescriptionProps) => {
     const DEFAULT_IMAGE = 'https://via.placeholder.com/250x400';
     let srcMap: Record<Appearance['type'], [male: string, female: string]> = {
         FamilyHead: [PatriarchMasc, PatriarchFem],
-        Worker: [Gypsy, Gypsy],
+        Worker: [BeggarMale, Gypsy],
         TravelingSoldier: [Mercenary, Mercenary],
     };
 

@@ -10,13 +10,14 @@ export function genPerson(): Person {
     const pronoun = chance.pickone([he, she]);
     const name = genName(pronoun);
     const appearance = chance.pickone(values(Appearance))();
+    const wealth = chance.pickone([Wealth.Poor, Wealth.Middle, Wealth.High, Wealth.Aristocrat]);
 
     const person: Person = {
         id,
         name,
         appearance,
         pronoun,
-        wealth: Wealth.Poor,
+        wealth,
     };
 
     return person;

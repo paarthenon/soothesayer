@@ -17,6 +17,7 @@ export const View = variant({
         customerId: string;
     }>(),
     People_debug: {},
+    Tutorial: {},
 })
 export type View<T extends TypeNames<typeof View> = undefined> = VariantOf<typeof View, T>;
 
