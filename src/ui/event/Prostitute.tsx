@@ -7,7 +7,7 @@ export const Prostitute = ({context, event}: EventProps<'Prostitute'>) => {
         <>
             {context.subject.name} met a prostitute and{' '}
             {match(event.outcome, {
-                chat: _ => <>they spent the chatting in comfort</>,
+                chat: _ => <>they spent the night chatting in comfort</>,
                 baby: _ => <>they got pregnant</>,
                 std: _ => <>{person.pronoun.they} contracted an STD</>,
             })}
