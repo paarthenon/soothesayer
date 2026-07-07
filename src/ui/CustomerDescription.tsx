@@ -1,15 +1,15 @@
 import {Image} from '@chakra-ui/react';
-import {Appearance, Person} from 'core/person';
-import {caps} from 'core/stringUtil';
+import {Appearance, Person} from '@/core/person';
+import {caps} from '@/core/stringUtil';
 import {match} from 'variant';
-import {he, she} from 'core/pronoun';
-import {PORTRAIT_HEIGHT, PORTRAIT_WIDTH} from 'gen/defaults';
+import {he, she} from '@/core/pronoun';
+import {PORTRAIT_HEIGHT, PORTRAIT_WIDTH} from '@/gen/defaults';
 
-import PatriarchFem from 'img/Patriarch.png';
-import PatriarchMasc from 'img/Rembrandt Self-portrait 1937.1.72.jpg';
-import Gypsy from 'img/Gypsy.png';
-import Mercenary from 'img/Mercenary.jpg';
-import BeggarMale from 'img/MaleBeggar - 1987.1140.1.jpg';
+import PatriarchFem from '@/img/Patriarch.png';
+import PatriarchMasc from '@/img/Rembrandt Self-portrait 1937.1.72.jpg';
+import Gypsy from '@/img/Gypsy.png';
+import Mercenary from '@/img/Mercenary.jpg';
+import BeggarMale from '@/img/MaleBeggar - 1987.1140.1.jpg';
 
 interface CustomerDescriptionProps {
     customer: Person;

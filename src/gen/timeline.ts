@@ -1,5 +1,5 @@
-import {Context, Health} from 'core/context';
-import {Event} from 'core/event';
+import {Context, Health} from '@/core/context';
+import {Event} from '@/core/event';
 import {match, partial} from 'variant';
 import chance from './chance';
 import {genEvent} from './event';

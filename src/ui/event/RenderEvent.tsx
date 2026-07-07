@@ -1,4 +1,4 @@
-import {Event} from 'core/event';
+import {Event} from '@/core/event';
 import {match, partial} from 'variant';
 import {EventProps} from './EventProps';
 import {ImageMap} from './ImageMap';
@@ -16,8 +16,8 @@ import {Love} from './Love';
 import {Mugging} from './Mugging';
 import {Prostitute} from './Prostitute';
 import {Relic} from './Relic';
-import {Metal} from 'redux/actions';
-import {useGame} from 'redux/hooks';
+import {Metal} from '@/redux/actions';
+import {useGame} from '@/redux/hooks';
 import {Ancestor} from './Ancestor';
 
 const ProfileIcon = (props: EventProps) => ImageMap[props.event.type];

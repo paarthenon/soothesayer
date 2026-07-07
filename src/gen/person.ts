@@ -1,8 +1,8 @@
-import {Appearance, Person, Wealth} from 'core/person';
-import {Pronoun, she, he} from 'core/pronoun';
+import {Appearance, Person, Wealth} from '@/core/person';
+import {Pronoun, she, he} from '@/core/pronoun';
 import chance from './chance';
 import {values} from 'lodash';
-import {uuid} from 'core/util';
+import {uuid} from '@/core/util';
 import {NAMES_FEMININE, NAMES_MASCULINE} from './defaults';
 
 export function genPerson(): Person {

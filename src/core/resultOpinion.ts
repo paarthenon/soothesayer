@@ -1,4 +1,4 @@
-import {Reading} from 'redux/state';
+import {Reading} from '@/redux/state';
 import {catalog, constant, lookup, match} from 'variant';
 import {Event} from './event';
 import {Person} from './person';

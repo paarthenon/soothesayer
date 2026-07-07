@@ -1,7 +1,7 @@
-import {Context} from 'core/context';
-import {Event} from 'core/event';
-import {Person} from 'core/person';
-import {View, MenuView} from 'core/view';
+import {Context} from '@/core/context';
+import {Event} from '@/core/event';
+import {Person} from '@/core/person';
+import {View, MenuView} from '@/core/view';
 import {catalog, fields, TypeNames, variant, VariantOf} from 'variant';
 
 export interface RootState {

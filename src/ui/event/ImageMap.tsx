@@ -1,5 +1,5 @@
 import {Icon} from '@chakra-ui/react';
-import {Event} from 'core/event';
+import {Event} from '@/core/event';
 import {RiParentLine} from 'react-icons/ri';
 import {GiBuyCard} from 'react-icons/gi';
 import {GiSwapBag} from 'react-icons/gi';

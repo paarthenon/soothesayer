@@ -12,7 +12,7 @@ import {
     MuggingOutcome,
     ProstituteOutcome,
     RelicOutcome,
-} from 'core/event';
+} from '@/core/event';
 import {values} from 'lodash';
 import {match, types, TypesOf} from 'variant';
 import chance from './chance';

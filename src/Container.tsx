@@ -13,8 +13,8 @@ import {
 import {mode} from '@chakra-ui/theme-tools';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
-import {store, persister} from 'redux/store';
-import {App} from 'App';
+import {store, persister} from './redux/store';
+import {App} from './App';
 
 const myTheme = extendTheme({
     config: {

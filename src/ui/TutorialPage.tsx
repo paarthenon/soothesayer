@@ -1,8 +1,8 @@
 import {Box, Button, Center, Heading, Text, VStack} from '@chakra-ui/react'
-import {View} from 'core/view';
+import {View} from '@/core/view';
 import {useDispatch} from 'react-redux';
-import {Action} from 'redux/actions';
-import {useGame} from 'redux/hooks';
+import {Action} from '@/redux/actions';
+import {useGame} from '@/redux/hooks';
 
 export const TutorialPage = () => {
     const townName = useGame(g => g.town.name)

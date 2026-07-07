@@ -1,5 +1,5 @@
 import {Box, Heading, List, ListItem, Text} from '@chakra-ui/react';
-import {MenuView} from 'core/view';
+import {MenuView} from '@/core/view';
 import {Link} from './Link';
 
 export const AboutPage = () => (

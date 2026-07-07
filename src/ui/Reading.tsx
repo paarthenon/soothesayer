@@ -1,11 +1,11 @@
 import {Box, List, ListItem, VStack, Text, Divider, Button, Fade, Img} from '@chakra-ui/react';
-import {Event} from 'core/event';
+import {Event} from '@/core/event';
 import {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {Action} from 'redux/actions';
-import {useGame} from 'redux/hooks';
+import {Action} from '@/redux/actions';
+import {useGame} from '@/redux/hooks';
 import {RenderEvent} from './event/RenderEvent';
-import tableTop from 'img/Henri_Matisse_-_Still_Life_with_Books_and_Candle_-_(MeisterDrucke-1550504).jpg';
+import tableTop from '@/img/Henri_Matisse_-_Still_Life_with_Books_and_Candle_-_(MeisterDrucke-1550504).jpg';
 
 export const Reading = () => {
     const dispatch = useDispatch();

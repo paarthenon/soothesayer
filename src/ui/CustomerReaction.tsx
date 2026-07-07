@@ -1,6 +1,6 @@
-import {resultOpinion} from 'core/resultOpinion';
-import {caps} from 'core/stringUtil';
-import {Reading} from 'redux/state';
+import {resultOpinion} from '@/core/resultOpinion';
+import {caps} from '@/core/stringUtil';
+import {Reading} from '@/redux/state';
 
 export interface CustomerReactionProps {
     reading: Reading;

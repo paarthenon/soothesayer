@@ -1,10 +1,10 @@
 import {Box, Heading, Text, List, ListItem, useDisclosure, Image} from '@chakra-ui/react';
-import {View, MenuView} from 'core/view';
+import {View, MenuView} from '@/core/view';
 import {useDispatch} from 'react-redux';
-import {Action} from 'redux/actions';
-import {useAppState} from 'redux/hooks';
-import {Link} from 'ui/Link';
-import cover from 'img/cover.png';
+import {Action} from '@/redux/actions';
+import {useAppState} from '@/redux/hooks';
+import {Link} from '@/ui/Link';
+import cover from '@/img/cover.png';
 
 export interface MainMenuProps {}
 export const MainMenu = ({}: MainMenuProps) => {

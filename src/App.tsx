@@ -1,14 +1,14 @@
 import {MainMenu} from './ui/MainMenu';
 import {useAppState} from './redux/hooks';
 import {match} from 'variant';
-import {AboutPage} from 'ui/AboutPage';
-import {OptionsPage} from 'ui/OptionsPage';
-import {Game} from 'ui/Game';
+import {AboutPage} from '@/ui/AboutPage';
+import {OptionsPage} from '@/ui/OptionsPage';
+import {Game} from '@/ui/Game';
 import {Box, Button, Grid, useDisclosure, VStack} from '@chakra-ui/react';
-import {AudioPlayer} from 'ui/AudioPlayer';
+import {AudioPlayer} from '@/ui/AudioPlayer';
 import {ErrorBoundary} from 'react-error-boundary';
 import {useDispatch} from 'react-redux';
-import {DebugAction} from 'redux/actions';
+import {DebugAction} from '@/redux/actions';
 
 export function App() {
     const view = useAppState(s => s.view);

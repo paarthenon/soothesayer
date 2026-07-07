@@ -1,7 +1,7 @@
 import {Box, List, ListItem, Text} from '@chakra-ui/react'
-import {Wealth} from 'core/person';
+import {Wealth} from '@/core/person';
 import {useMemo} from 'react';
-import {useGame} from 'redux/hooks'
+import {useGame} from '@/redux/hooks'
 
 
 export const PeoplePageDebug = () => {

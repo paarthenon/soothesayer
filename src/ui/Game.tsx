@@ -11,13 +11,13 @@ import {
     Text,
     VStack,
 } from '@chakra-ui/react';
-import {MenuView, View} from 'core/view';
+import {MenuView, View} from '@/core/view';
 import {useDispatch} from 'react-redux';
-import {Action} from 'redux/actions';
-import {useGame} from 'redux/hooks';
-import {Link} from 'ui/Link';
+import {Action} from '@/redux/actions';
+import {useGame} from '@/redux/hooks';
+import {Link} from '@/ui/Link';
 import {Reading as ReadingView} from './Reading';
-import {ReadingStage} from 'redux/state';
+import {ReadingStage} from '@/redux/state';
 import {CustomerReaction} from './CustomerReaction';
 import {GreetCustomer} from './GreetCustomer';
 import {match} from 'variant';

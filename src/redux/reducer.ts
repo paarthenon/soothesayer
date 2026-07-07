@@ -1,17 +1,17 @@
-import {Health} from 'core/context';
-import {Appearance, Person, Wealth} from 'core/person';
-import {she} from 'core/pronoun';
-import {resultOpinion} from 'core/resultOpinion';
-import {View, MenuView} from 'core/view';
-import {genEvent} from 'gen/event';
-import {genPerson} from 'gen/person';
-import {genTimeline} from 'gen/timeline';
-import produce from 'immer';
+import {Health} from '@/core/context';
+import {Appearance, Person, Wealth} from '@/core/person';
+import {she} from '@/core/pronoun';
+import {resultOpinion} from '@/core/resultOpinion';
+import {View, MenuView} from '@/core/view';
+import {genEvent} from '@/gen/event';
+import {genPerson} from '@/gen/person';
+import {genTimeline} from '@/gen/timeline';
+import {produce} from 'immer';
 import {just, match, matcher, types} from 'variant';
 import {Action, AppAction, DebugAction, GameAction} from './actions';
 import {GameState, initState, ReadingStage, RootState} from './state';
-import {STARTING_COINS_GOLD, STARTING_COINS_SILVER, STARTING_COINS_SOUL, TOWN_NAMES} from 'gen/defaults';
-import chance from 'gen/chance';
+import {STARTING_COINS_GOLD, STARTING_COINS_SILVER, STARTING_COINS_SOUL, TOWN_NAMES} from '@/gen/defaults';
+import chance from '@/gen/chance';
 
 export const appReducer = (state: RootState, action: AppAction) => {
     return produce(state, s => {

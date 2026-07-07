@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
-import {MenuView, View} from 'core/view';
-import {Action} from 'redux/actions';
+import {MenuView, View} from '@/core/view';
+import {Action} from '@/redux/actions';
 import {isOfVariant} from 'variant';
 
 export interface LinkProps {

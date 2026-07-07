@@ -1,4 +1,4 @@
-import {Person} from 'core/person';
+import {Person} from '@/core/person';
 import {fields, payload, TypeNames, variant, VariantOf} from 'variant';
 import {MenuView, View} from '../core/view';
 
