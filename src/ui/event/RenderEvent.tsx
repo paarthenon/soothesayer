@@ -1,7 +1,7 @@
 import {Event} from '@/core/event';
 import {match, partial} from 'variant';
 import {EventProps} from './EventProps';
-import {ImageMap} from './ImageMap';
+import {EventImageMap} from './EventImageMap';
 import {HStack, IconButton} from '@chakra-ui/react';
 import {GiToken} from 'react-icons/gi';
 
@@ -20,7 +20,7 @@ import {Metal} from '@/redux/actions';
 import {useGame} from '@/redux/hooks';
 import {Ancestor} from './Ancestor';
 
-const ProfileIcon = (props: EventProps) => ImageMap[props.event.type];
+const ProfileIcon = (props: EventProps) => EventImageMap[props.event.type];
 
 const RenderEventLine = (props: EventProps) => {
     return match(props.event, {

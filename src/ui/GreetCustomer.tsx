@@ -1,8 +1,8 @@
 import {HStack, VStack, Text} from '@chakra-ui/react';
 import {Person} from '@/core/person';
 import {caps} from '@/core/stringUtil';
-import {CustomerPortrait, CustomerDescription} from './CustomerDescription';
-
+import {CustomerDescription} from './CustomerDescription';
+import {CustomerPortrait} from './CustomerPortrait';
 export interface GreetCustomerProps {
     customer: Person;
 }

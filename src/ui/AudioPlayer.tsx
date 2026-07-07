@@ -4,8 +4,7 @@ import Song1 from '../music/Stay the Course.mp3';
 const audioCtx = new AudioContext();
 
 export const AudioPlayer = () => (
-    <Box style={{
-    }}>
+    <Box>
         <audio
             controls
             src={Song1}

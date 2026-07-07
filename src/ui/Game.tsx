@@ -4,25 +4,24 @@ import {
     Center,
     Divider,
     HStack,
-    List,
     Modal,
     ModalContent,
     ModalOverlay,
     Text,
-    VStack,
 } from '@chakra-ui/react';
 import {MenuView, View} from '@/core/view';
 import {useDispatch} from 'react-redux';
 import {Action} from '@/redux/actions';
 import {useGame} from '@/redux/hooks';
 import {Link} from '@/ui/Link';
+import {match} from 'variant';
 import {Reading as ReadingView} from './Reading';
 import {ReadingStage} from '@/redux/state';
 import {CustomerReaction} from './CustomerReaction';
 import {GreetCustomer} from './GreetCustomer';
-import {match} from 'variant';
 import {TutorialPage} from './TutorialPage';
 import {PeoplePageDebug} from './PeoplePage';
+import {PersonPage} from './PersonPage';
 
 export const Game = () => {
     const gold = useGame(g => g.coins.gold);
@@ -91,7 +90,8 @@ export const Game = () => {
                     </>
                 },
                 People_debug: () => <PeoplePageDebug />,
-                Reading: () => <div>Reading</div>,
+                Person_debug: ({personId}) => <PersonPage personId={personId} />,
+                Reading: () => <Box>Reading</Box>,
                 Tutorial: () => <TutorialPage />,
             })}
 

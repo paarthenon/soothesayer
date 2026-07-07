@@ -4,7 +4,7 @@ import {match} from 'variant';
 import {AboutPage} from '@/ui/AboutPage';
 import {OptionsPage} from '@/ui/OptionsPage';
 import {Game} from '@/ui/Game';
-import {Box, Button, Grid, useDisclosure, VStack} from '@chakra-ui/react';
+import {Box, Button, Grid, VStack} from '@chakra-ui/react';
 import {AudioPlayer} from '@/ui/AudioPlayer';
 import {ErrorBoundary} from 'react-error-boundary';
 import {useDispatch} from 'react-redux';

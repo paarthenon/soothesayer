@@ -13,7 +13,7 @@ import {GiHighPunch} from 'react-icons/gi';
 import {GiBrokenHeart} from 'react-icons/gi';
 import {GiStorkDelivery} from 'react-icons/gi';
 
-export const ImageMap: Record<Event['type'], JSX.Element> = {
+export const EventImageMap: Record<Event['type'], JSX.Element> = {
     Ancestor: <Icon as={RiParentLine} aria-label="ancestor revealed" />,
     Relic: <Icon as={GiBuyCard} aria-label="relic" />,
     FoundMoney: <Icon as={GiSwapBag} aria-label="found money" />,

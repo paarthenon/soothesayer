@@ -1,5 +1,4 @@
-import {Box, List, ListItem, VStack, Text, Divider, Button, Fade, Img} from '@chakra-ui/react';
-import {Event} from '@/core/event';
+import {Box, VStack, Text, Button, Fade, Img} from '@chakra-ui/react';
 import {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {Action} from '@/redux/actions';
@@ -43,10 +42,10 @@ export const Reading = () => {
                 }}
             >
                 <VStack gap={2} margin={4} opacity={0.7}>
-                    {reading.timeline.map((te, position) => (
+                    {reading.timeline.map((timelineEvent, position) => (
                         <RenderEvent
                             key={position}
-                            event={te}
+                            event={timelineEvent}
                             context={reading.context}
                             rerollFunc={metal => {
                                 dispatch(
