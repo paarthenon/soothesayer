@@ -1,19 +1,26 @@
-import {TypeNames, variant, VariantOf} from "variant";
-import {Pronoun} from "./pronoun";
+import {TypeNames, variant, VariantOf} from 'variant';
+import {Pronoun} from './pronoun';
 
 /**
  * Appearance represents a character type.
- * 
+ *
  * Probably good to go with portraits
  * - https://fineartamerica.com/featured/4-jean-baptiste-faure-edouard-manet.html (generic man)
  * - https://fineartamerica.com/featured/1-beggar-with-a-duffle-coat-edouard-manet.html (male begger)
  * - https://fineartamerica.com/featured/1-portrait-of-jeanne-wenz-henri-de-toulouse-lautrec.html (wealthy woman)
  * - https://fineartamerica.com/featured/gypsy-will-bullas.html (gypsy)
- * - 
+ * -
  * - https://fineartamerica.com/featured/egyptian-woman-with-earrings-art-dozen.html (egyptian/gypsy)
  * - https://fineartamerica.com/featured/carmen-art-dozen.html (neutral woman)
  * - https://fineartamerica.com/featured/portrait-of-miss-katherine-elizabeth-lewis-art-dozen.html (aristocratic woman)
  * - https://fineartamerica.com/featured/portrait-of-a-young-man-by-hans-motionage-designs.html (young man)
+ * 
+ * - https://www.nga.gov/artworks/79-self-portrait
+ * - https://www.nga.gov/artworks/183327-monsieur-aristide-briand-former-premier-france
+ * - https://www.nga.gov/artworks/41578-gypsy-woman-mandolin
+ * - https://www.nga.gov/artworks/56413-salomon-de-bray-formerly-jan-van-goyen
+ * - https://www.nga.gov/artworks/43598-lord-algernon-percy
+ * 
  */
 export const Appearance = variant({
     /**
@@ -24,8 +31,12 @@ export const Appearance = variant({
      * Rich person in fine clothes
      */
     FamilyHead: {},
-})
-export type Appearance<T extends TypeNames<typeof Appearance> = undefined> = VariantOf<typeof Appearance, T>;
+    TravelingSoldier: {},
+});
+export type Appearance<T extends TypeNames<typeof Appearance> = undefined> = VariantOf<
+    typeof Appearance,
+    T
+>;
 
 export enum Wealth {
     Poor,
@@ -35,11 +46,9 @@ export enum Wealth {
 }
 
 export interface Person {
+    id: string;
     name: string;
     pronoun: Pronoun;
     appearance: Appearance;
-    /**
-     * @deprecated DON'T USE IT. Not enough time.
-     */
     wealth: Wealth;
 }

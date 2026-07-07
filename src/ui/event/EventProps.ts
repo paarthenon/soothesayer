@@ -1,5 +1,5 @@
-import {Context} from 'core/context';
-import {Event} from 'core/event';
+import {Context} from '@/core/context';
+import {Event} from '@/core/event';
 import {TypesOf, TypeNames} from 'variant';
 
 export interface EventProps<T extends TypeNames<typeof Event> = undefined> {

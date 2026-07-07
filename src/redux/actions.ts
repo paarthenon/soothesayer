@@ -1,18 +1,19 @@
-import {Person} from 'core/person';
+import {Person} from '@/core/person';
 import {fields, payload, TypeNames, variant, VariantOf} from 'variant';
-import {View} from '../core/view';
+import {MenuView, View} from '../core/view';
 
-export const Metal = variant([
-    'gold',
-    'silver',
-]);
+export const Metal = variant(['gold', 'silver']);
 export type Metal = keyof typeof Metal;
 
 export const AppAction = variant({
     StartGame: {},
+    GoToMenuView: payload<MenuView>(),
     GoTo: payload<View>(),
-})
-export type AppAction<T extends TypeNames<typeof AppAction> = undefined> = VariantOf<typeof AppAction, T>
+});
+export type AppAction<T extends TypeNames<typeof AppAction> = undefined> = VariantOf<
+    typeof AppAction,
+    T
+>;
 
 export const GameAction = variant({
     GreetCustomer: {},
@@ -21,15 +22,28 @@ export const GameAction = variant({
      */
     BeginReading: {},
     AlterDice: fields<{
-        position: number,
-        rerollType: Metal,
+        position: number;
+        rerollType: Metal;
     }>(),
     ReportReading: {},
+});
+export type GameAction<T extends TypeNames<typeof GameAction> = undefined> = VariantOf<
+    typeof GameAction,
+    T
+>;
+
+export const DebugAction = variant({
+    ResetEverything: {},
 })
-export type GameAction<T extends TypeNames<typeof GameAction> = undefined> = VariantOf<typeof GameAction, T>
+export type DebugAction<T extends TypeNames<typeof DebugAction> = undefined> = VariantOf<typeof DebugAction, T>;
+
 
 export const Action = variant({
     ...AppAction,
     ...GameAction,
-})
-export type Action<T extends TypeNames<typeof Action> = undefined> = VariantOf<typeof Action, T>
+    ...DebugAction,
+});
+export type Action<T extends TypeNames<typeof Action> = undefined> = VariantOf<
+    typeof Action,
+    T
+>;

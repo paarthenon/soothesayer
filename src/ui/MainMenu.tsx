@@ -1,14 +1,15 @@
 import {Box, Heading, Text, List, ListItem, useDisclosure, Image} from '@chakra-ui/react';
-import {View} from 'core/view';
+import {View, MenuView} from '@/core/view';
 import {useDispatch} from 'react-redux';
-import {Action} from 'redux/actions';
-import {useAppState} from "redux/hooks";
-import {Link} from 'ui/Link';
-import cover from 'img/cover.png';
+import {Action} from '@/redux/actions';
+import {useAppState} from '@/redux/hooks';
+import {Link} from '@/ui/Link';
+import cover from '@/img/cover.png';
 
-export interface MainMenuProps { }
-export const MainMenu = ({ }: MainMenuProps) => {
-    const isGameRunning = useAppState(s => s.game != undefined);
+export interface MainMenuProps {}
+export const MainMenu = ({}: MainMenuProps) => {
+    const game = useAppState(s => s.game);
+    const isGameRunning = game != undefined;
     const dispatch = useDispatch();
 
     function newGame() {
@@ -25,19 +26,19 @@ export const MainMenu = ({ }: MainMenuProps) => {
             <List>
                 {isGameRunning && (
                     <ListItem>
-                        <Link text='Resume' goto={View.Game()} />
+                        <Link text="Resume" goto={MenuView.Game()} />
                     </ListItem>
                 )}
                 <ListItem>
-                    <Link text='New Game' onClick={newGame}/>
+                    <Link text="New Game" onClick={newGame} />
                 </ListItem>
                 <ListItem>
-                    <Link text='Options' goto={View.Options()} />
+                    <Link text="Options" goto={MenuView.Options()} />
                 </ListItem>
                 <ListItem>
-                    <Link text='About' goto={View.About()} />
+                    <Link text="About" goto={MenuView.About()} />
                 </ListItem>
             </List>
         </Box>
     );
-}
+};
