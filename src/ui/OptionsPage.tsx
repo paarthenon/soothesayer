@@ -1,4 +1,4 @@
-import {Box, Text} from '@chakra-ui/react';
+import {Box, Text } from '@chakra-ui/react';
 import {ColorModeSwitcher} from '@/ColorModeSwitcher';
 import {MenuView} from '@/core/view';
 import {Link} from './Link';

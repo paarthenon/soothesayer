@@ -2,7 +2,7 @@ import {Event} from '@/core/event';
 import {match, partial} from 'variant';
 import {EventProps} from './EventProps';
 import {EventImageMap} from './EventImageMap';
-import {HStack, IconButton} from '@chakra-ui/react';
+import {HStack, IconButton } from '@chakra-ui/react';
 import {GiToken} from 'react-icons/gi';
 
 import {Arrival} from './Arrival';
@@ -46,18 +46,14 @@ const RerollEventButtons = (props: EventProps & {rerollFunc: (metal: Metal) => v
         <>
             <IconButton
                 aria-label="gold"
-                colorScheme="yellow"
-                icon={<GiToken />}
+                colorPalette="yellow"
                 onClick={() => props.rerollFunc('gold')}
-                disabled={!hasGold}
-            />
+                disabled={!hasGold}><GiToken /></IconButton>
             <IconButton
                 aria-label="silver"
-                colorScheme="gray"
-                icon={<GiToken />}
+                colorPalette="gray"
                 onClick={() => props.rerollFunc('silver')}
-                disabled={!hasSilver}
-            />
+                disabled={!hasSilver}><GiToken /></IconButton>
         </>
     );
 };

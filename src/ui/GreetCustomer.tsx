@@ -1,4 +1,4 @@
-import {HStack, VStack, Text} from '@chakra-ui/react';
+import {HStack, VStack, Text } from '@chakra-ui/react';
 import {Person} from '@/core/person';
 import {caps} from '@/core/stringUtil';
 import {CustomerDescription} from './CustomerDescription';
@@ -11,7 +11,7 @@ export const GreetCustomer = ({customer}: GreetCustomerProps) => {
     return (
         <HStack maxWidth={'800'}>
             <CustomerPortrait customer={customer} />
-            <VStack spacing={4}>
+            <VStack gap={4}>
                 <Text>
                     The bell rings marking another customer coming through the door. You
                     wave to {customer.pronoun.them}, welcoming <b>{customer.name}</b> into your

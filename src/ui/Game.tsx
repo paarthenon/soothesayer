@@ -1,14 +1,4 @@
-import {
-    Box,
-    Button,
-    Center,
-    Divider,
-    HStack,
-    Modal,
-    ModalContent,
-    ModalOverlay,
-    Text,
-} from '@chakra-ui/react';
+import {Box, Button, Center, HStack, Text, Separator, Dialog, Portal } from '@chakra-ui/react';
 import {MenuView, View} from '@/core/view';
 import {useDispatch} from 'react-redux';
 import {Action} from '@/redux/actions';
@@ -94,22 +84,30 @@ export const Game = () => {
                 Reading: () => <Box>Reading</Box>,
                 Tutorial: () => <TutorialPage />,
             })}
-
-
-            <Divider my={8} />
+            <Separator my={8} />
             <HStack>
                 <Link text="Main menu" goto={MenuView.MainMenu()} />
                 <Link text="Home" goto={View.Home()} />
                 <Link text="People list" goto={View.People_debug()} />
                 <Link text="Tutorial" goto={View.Tutorial()} />
             </HStack>
+            <Dialog.Root open={isOpen} id="fuckingmodal" onOpenChange={e => {
+                if (!e.open)
+                    {}
+            }}>
+                <Portal>
+                    <Dialog.Backdrop />
+                    <Dialog.Positioner>
+                        <Dialog.Content bg='black'>
+                            <Dialog.Body>
 
-            <Modal isOpen={isOpen} onClose={() => {}} id="fuckingmodal">
-                <ModalOverlay />
-                <ModalContent>
-                    <ReadingView />
-                </ModalContent>
-            </Modal>
+                                <ReadingView />
+                            </Dialog.Body>
+                        </Dialog.Content>
+                    </Dialog.Positioner>
+
+                </Portal>
+            </Dialog.Root>
         </Box>
     );
 };

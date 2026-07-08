@@ -1,4 +1,4 @@
-import {Icon} from '@chakra-ui/react';
+import { Steps, Icon } from '@chakra-ui/react';
 import {Event} from '@/core/event';
 import {RiParentLine} from 'react-icons/ri';
 import {GiBuyCard} from 'react-icons/gi';
@@ -14,16 +14,16 @@ import {GiBrokenHeart} from 'react-icons/gi';
 import {GiStorkDelivery} from 'react-icons/gi';
 
 export const EventImageMap: Record<Event['type'], JSX.Element> = {
-    Ancestor: <Icon as={RiParentLine} aria-label="ancestor revealed" />,
-    Relic: <Icon as={GiBuyCard} aria-label="relic" />,
-    FoundMoney: <Icon as={GiSwapBag} aria-label="found money" />,
-    Drowning: <Icon as={GiDrowning} aria-label="drowning" />,
-    Mugged: <Icon as={GiBowieKnife} aria-label="mugging" />,
-    Love: <Icon as={GiLovers} aria-label="love" />,
-    Arrival: <Icon as={GiJourney} aria-label="arrival" />,
-    Fork: <Icon as={GiCrossroad} aria-label="crossroad" />,
-    Prostitute: <Icon as={GiFemaleLegs} aria-label="legs" />,
-    Fight: <Icon as={GiHighPunch} aria-label="punch" />,
-    Breakup: <Icon as={GiBrokenHeart} aria-label="broken heart" />,
-    Child: <Icon as={GiStorkDelivery} aria-label="baby" />,
+    Ancestor: <Icon aria-label="ancestor revealed" asChild><RiParentLine /></Icon>,
+    Relic: <Icon aria-label="relic" asChild><GiBuyCard /></Icon>,
+    FoundMoney: <Icon aria-label="found money" asChild><GiSwapBag /></Icon>,
+    Drowning: <Icon aria-label="drowning" asChild><GiDrowning /></Icon>,
+    Mugged: <Icon aria-label="mugging" asChild><GiBowieKnife /></Icon>,
+    Love: <Icon aria-label="love" asChild><GiLovers /></Icon>,
+    Arrival: <Icon aria-label="arrival" asChild><GiJourney /></Icon>,
+    Fork: <Icon aria-label="crossroad" asChild><GiCrossroad /></Icon>,
+    Prostitute: <Icon aria-label="legs" asChild><GiFemaleLegs /></Icon>,
+    Fight: <Icon aria-label="punch" asChild><GiHighPunch /></Icon>,
+    Breakup: <Icon aria-label="broken heart" asChild><GiBrokenHeart /></Icon>,
+    Child: <Icon aria-label="baby" asChild><GiStorkDelivery /></Icon>,
 };

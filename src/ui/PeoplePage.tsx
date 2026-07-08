@@ -1,4 +1,4 @@
-import {Box, List, ListItem, Text} from '@chakra-ui/react'
+import {Box, List, Text } from '@chakra-ui/react';
 import {Wealth} from '@/core/person';
 import {useMemo} from 'react';
 import {useGame} from '@/redux/hooks'
@@ -14,11 +14,11 @@ export const PeoplePageDebug = () => {
     return (
         <Box>
             <Text>Person list has {personList.length} entries.</Text>
-            <List>
+            <List.Root listStyleType='none'>
                 {personList.map((person, index) => (
-                    <ListItem key={person.id}>{index} - <Link goto={View.Person_debug({personId: person.id})}>{person.name}</Link> - {person.pronoun.they}/{person.pronoun.them} - {person.appearance.type} - {Wealth[person.wealth]}</ListItem>
+                    <List.Item key={person.id}>{index} - <Link goto={View.Person_debug({personId: person.id})}>{person.name}</Link> - {person.pronoun.they}/{person.pronoun.them} - {person.appearance.type} - {Wealth[person.wealth]}</List.Item>
                 ))}
-            </List>
+            </List.Root>
         </Box>
-    )
+    );
 }

@@ -1,7 +1,7 @@
 import {useGame} from '@/redux/hooks';
 import {Link} from './Link';
 import {View} from '@/core/view';
-import {Box, Center, Image} from '@chakra-ui/react';
+import {Box, Center, Image } from '@chakra-ui/react';
 import {CustomerPortrait} from './CustomerPortrait';
 
 

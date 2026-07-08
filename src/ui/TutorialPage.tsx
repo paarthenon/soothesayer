@@ -1,4 +1,4 @@
-import {Box, Button, Center, Heading, Text, VStack} from '@chakra-ui/react'
+import { Steps, Box, Button, Center, Heading, Text, VStack } from '@chakra-ui/react';
 import {View} from '@/core/view';
 import {useDispatch} from 'react-redux';
 import {Action} from '@/redux/actions';

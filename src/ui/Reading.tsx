@@ -1,4 +1,4 @@
-import {Box, VStack, Text, Button, Fade, Img} from '@chakra-ui/react';
+import { Steps, Box, VStack, Text, Button, Image, Presence } from '@chakra-ui/react';
 import {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {Action} from '@/redux/actions';
@@ -23,7 +23,7 @@ export const Reading = () => {
     return (
         <Box margin={4}>
             <VStack>
-                <Img src={tableTop} />
+                <Image src={tableTop} />
                 <Text>
                     You commune with the Altar of fate, placing your palm flat against its
                     top. Gold and silver coins litter the surface, stacked between melting
@@ -34,13 +34,16 @@ export const Reading = () => {
                     image... an image of a person that does not yet exist.
                 </Text>
             </VStack>
-
-            <Fade
-                in={showText}
+            <Presence
+                present={showText}
                 style={{
                     transitionDuration: 'var(--chakra-transition-duration-ultra-slow)',
                 }}
-            >
+                animationName={{
+                    _open: 'fade-in',
+                    _closed: 'fade-out'
+                }}
+                animationDuration='moderate'>
                 <VStack gap={2} margin={4} opacity={0.7}>
                     {reading.timeline.map((timelineEvent, position) => (
                         <RenderEvent
@@ -58,8 +61,7 @@ export const Reading = () => {
                         />
                     ))}
                 </VStack>
-            </Fade>
-
+            </Presence>
             <Button
                 onClick={() => {
                     dispatch(Action.ReportReading());

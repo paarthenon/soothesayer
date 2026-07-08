@@ -1,4 +1,11 @@
-import {Box, IconButton, Slider, SliderTrack, SliderFilledTrack, SliderThumb, SliderMark} from '@chakra-ui/react';
+import {
+    Steps,
+    Box,
+    IconButton,
+    Slider,
+    SliderTrack,
+    SliderThumb,
+} from '@chakra-ui/react';
 import Song1 from '../music/Stay the Course.mp3';
 
 const audioCtx = new AudioContext();

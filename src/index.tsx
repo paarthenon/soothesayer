@@ -1,4 +1,3 @@
-import {ColorModeScript} from '@chakra-ui/react';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import {Container} from './Container';
@@ -12,7 +11,7 @@ const root = ReactDOM.createRoot(container);
 
 root.render(
     <React.StrictMode>
-        <ColorModeScript />
+
         <Container />
     </React.StrictMode>
 );
