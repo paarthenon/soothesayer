@@ -100,12 +100,10 @@ export const Game = () => {
                     <Dialog.Positioner>
                         <Dialog.Content bg='black'>
                             <Dialog.Body>
-
                                 <ReadingView />
                             </Dialog.Body>
                         </Dialog.Content>
                     </Dialog.Positioner>
-
                 </Portal>
             </Dialog.Root>
         </Box>
